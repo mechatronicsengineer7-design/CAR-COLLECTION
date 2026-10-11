@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -9,433 +10,88 @@
 <title>Super Car Collection</title>
 
 <style>
-:root {
-  --red: #e50914;
-  --bg: #090909;
-  --panel: #151515;
-  --border: #333;
-  --text: #f5f5f5;
-  --muted: #aaa;
-}
-
-* { box-sizing: border-box; }
-html { scroll-behavior: smooth; }
-
-body {
-  margin: 0;
-  background: var(--bg);
-  color: var(--text);
-  font-family: Arial, Helvetica, sans-serif;
-}
-
-a { color: inherit; text-decoration: none; }
-button, input, select, textarea { font: inherit; }
-button { cursor: pointer; }
-
-header {
-  position: sticky;
-  top: 0;
-  z-index: 50;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 15px;
-  padding: 15px 5%;
-  background: #090909f5;
-  border-bottom: 1px solid #292929;
-}
-
-.logo {
-  font-size: 20px;
-  font-weight: 900;
-  letter-spacing: 1px;
-}
-
-.logo span, h1 span, .section-heading span {
-  color: var(--red);
-}
-
-nav { display: flex; gap: 18px; }
-nav a { font-size: 14px; color: #ddd; }
-nav a:hover { color: var(--red); }
-
-.menu-wrap { position: relative; }
-
-.dots {
-  width: 42px;
-  height: 42px;
-  border: 1px solid #444;
-  border-radius: 50%;
-  background: #181818;
-  color: white;
-  font-size: 24px;
-}
-
-.dropdown {
-  display: none;
-  position: absolute;
-  right: 0;
-  top: 48px;
-  width: 240px;
-  padding: 8px;
-  background: #171717;
-  border: 1px solid #383838;
-  border-radius: 10px;
-}
-
-.dropdown.open { display: block; }
-
-.dropdown button {
-  display: block;
-  width: 100%;
-  padding: 12px;
-  text-align: left;
-  color: white;
-  background: none;
-  border: 0;
-  border-radius: 6px;
-}
-
-.dropdown button:hover { background: #292929; }
-
-.hero {
-  min-height: 560px;
-  display: flex;
-  align-items: center;
-  padding: 70px 7%;
-  background:
-    linear-gradient(90deg, #050505 0%, #050505df 40%, #05050530 100%),
-    url("https://images.unsplash.com/photo-1503376780353-7e6692767b70?auto=format&fit=crop&w=2000&q=85")
-    center/cover;
-}
-
-.hero-content { max-width: 650px; }
-
-.eyebrow {
-  color: var(--red);
-  font-weight: bold;
-  letter-spacing: 4px;
-  font-size: 12px;
-}
-
-h1 {
-  font-size: clamp(42px, 7vw, 76px);
-  line-height: .98;
-  text-transform: uppercase;
-}
-
-.hero p, .section-heading p {
-  color: #bbb;
-  line-height: 1.8;
-}
-
-.primary, .secondary {
-  display: inline-block;
-  padding: 12px 18px;
-  margin: 8px 8px 0 0;
-  border-radius: 6px;
-  font-weight: bold;
-  border: 1px solid var(--red);
-}
-
-.primary {
-  background: var(--red);
-  color: white;
-}
-
-.primary:hover { background: #b90009; }
-
-.secondary {
-  background: transparent;
-  color: white;
-}
-
-section { padding: 55px 5%; }
-
-.section-heading { margin-bottom: 25px; }
-
-.section-heading h2 {
-  font-size: clamp(27px, 4vw, 38px);
-  text-transform: uppercase;
-  margin: 0 0 10px;
-}
-
-.gallery-tools {
-  display: flex;
-  gap: 12px;
-  margin-bottom: 24px;
-  flex-wrap: wrap;
-}
-
-.gallery-tools input,
-.gallery-tools select,
-.field input,
-.field textarea {
-  padding: 12px;
-  width: 100%;
-  background: #171717;
-  color: white;
-  border: 1px solid #393939;
-  border-radius: 7px;
-}
-
-.search-box { flex: 1 1 260px; }
-.gallery-tools select { flex: 0 1 200px; }
-
-.car-grid {
-  display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
-  gap: 22px;
-}
-
-.car-card {
-  overflow: hidden;
-  background: var(--panel);
-  border: 1px solid var(--border);
-  border-radius: 12px;
-  transition: .2s;
-}
-
-.car-card:hover {
-  transform: translateY(-4px);
-  border-color: var(--red);
-}
-
-.car-card img {
-  width: 100%;
-  height: 215px;
-  object-fit: cover;
-  background: #222;
-}
-
-.car-content { padding: 17px; }
-
-.car-content h3 {
-  margin: 0 0 9px;
-  font-size: 21px;
-}
-
-.description {
-  color: var(--muted);
-  font-size: 13px;
-  line-height: 1.6;
-}
-
-.spec-grid {
-  display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: 9px;
-  margin-top: 15px;
-}
-
-.spec {
-  padding: 10px;
-  background: #202020;
-  border-radius: 7px;
-  overflow-wrap: anywhere;
-}
-
-.spec small {
-  display: block;
-  color: #999;
-  font-size: 10px;
-  text-transform: uppercase;
-  margin-bottom: 5px;
-}
-
-.spec strong { font-size: 13px; }
-
-.tag {
-  color: #ff575d;
-  font-size: 12px;
-  font-weight: bold;
-}
-
-.panel {
-  max-width: 950px;
-  margin: auto;
-  padding: 24px;
-  background: var(--panel);
-  border: 1px solid #383838;
-  border-radius: 12px;
-}
-
-.creator-panel {
-  max-width: 900px;
-  margin: auto;
-  display: grid;
-  grid-template-columns: 1fr 2fr;
-  gap: 30px;
-  padding: 28px;
-  background: var(--panel);
-  border: 1px solid #333;
-  border-radius: 13px;
-}
-
-.creator-mark {
-  display: grid;
-  place-items: center;
-  min-height: 180px;
-  border-radius: 10px;
-  background: linear-gradient(135deg, #350000, #111, #292929);
-  font-size: 55px;
-  font-weight: 900;
-  color: var(--red);
-}
-
-.creator-panel p {
-  color: #bbb;
-  line-height: 1.8;
-}
-
-.creator-panel a { color: #ff575d; }
-
-.modal-backdrop {
-  display: none;
-  position: fixed;
-  inset: 0;
-  z-index: 100;
-  padding: 20px;
-  overflow-y: auto;
-  align-items: center;
-  justify-content: center;
-  background: #000c;
-}
-
-.modal-backdrop.open { display: flex; }
-
-.modal {
-  width: min(700px, 100%);
-  padding: 25px;
-  background: #141414;
-  border: 1px solid #444;
-  border-radius: 13px;
-}
-
-.modal-header {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-}
-
-.close-modal {
-  font-size: 25px;
-  color: white;
-  background: none;
-  border: 0;
-}
-
-.form-grid {
-  display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: 12px;
-}
-
-.field label {
-  display: block;
-  color: #bbb;
-  font-size: 12px;
-  margin-bottom: 6px;
-}
-
-.field.full { grid-column: 1 / -1; }
-
-.field textarea {
-  min-height: 90px;
-  resize: vertical;
-}
-
-.form-actions {
-  display: flex;
-  gap: 10px;
-  flex-wrap: wrap;
-  margin-top: 18px;
-}
-
-.status {
-  font-size: 13px;
-  color: #aaa;
-  line-height: 1.6;
-}
-
-.error { color: #ff8585; }
-.success { color: #8be3a3; }
-
-.pending-item {
-  border: 1px solid #383838;
-  border-radius: 10px;
-  padding: 15px;
-  margin: 12px 0;
-  display: grid;
-  grid-template-columns: 130px 1fr;
-  gap: 15px;
-}
-
-.pending-item img {
-  width: 130px;
-  height: 100px;
-  object-fit: cover;
-  border-radius: 7px;
-}
-
-.pending-actions {
-  display: flex;
-  gap: 8px;
-  flex-wrap: wrap;
-  margin-top: 10px;
-}
-
-.small-btn {
-  padding: 8px 12px;
-  border-radius: 6px;
-  border: 1px solid #555;
-  background: #222;
-  color: white;
-}
-
-.approve-btn {
-  background: #176b35;
-  border-color: #176b35;
-}
-
-.reject-btn {
-  background: #681d23;
-  border-color: #681d23;
-}
-
-footer {
-  text-align: center;
-  padding: 25px 5%;
-  border-top: 1px solid #292929;
-  color: #888;
-  font-size: 13px;
-  line-height: 1.8;
-}
-
-footer strong { color: white; }
-[hidden] { display: none !important; }
-
-@media (max-width: 900px) {
-  .car-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
-  nav { gap: 10px; }
-  nav a { font-size: 12px; }
-}
-
-@media (max-width: 600px) {
-  header { padding: 12px 4%; gap: 8px; }
-  .logo { font-size: 14px; }
-  nav { gap: 8px; }
-  nav a { font-size: 11px; }
-  nav a:nth-child(2) { display: none; }
-  .hero { min-height: 460px; padding: 50px 6%; }
-  section { padding: 40px 5%; }
-  .car-grid { grid-template-columns: 1fr; }
-  .creator-panel { grid-template-columns: 1fr; padding: 20px; }
-  .creator-mark { min-height: 120px; }
-  .form-grid { grid-template-columns: 1fr; }
-  .field.full { grid-column: auto; }
-  .pending-item { grid-template-columns: 1fr; }
-  .pending-item img { width: 100%; height: 180px; }
+:root{--red:#e50914;--bg:#090909;--panel:#151515;--border:#333;--text:#f5f5f5;--muted:#aaa}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--bg);color:var(--text);font-family:Arial,Helvetica,sans-serif}
+a{color:inherit;text-decoration:none}
+button,input,select,textarea{font:inherit}
+button{cursor:pointer}
+header{position:sticky;top:0;z-index:50;display:flex;align-items:center;justify-content:space-between;gap:15px;padding:15px 5%;background:#090909f5;border-bottom:1px solid #292929}
+.logo{font-size:20px;font-weight:900;letter-spacing:1px}
+.logo span,h1 span,.section-heading span{color:var(--red)}
+nav{display:flex;gap:18px}
+nav a{font-size:14px;color:#ddd}
+nav a:hover{color:var(--red)}
+.menu-wrap{position:relative}
+.dots{width:42px;height:42px;border:1px solid #444;border-radius:50%;background:#181818;color:white;font-size:24px}
+.dropdown{display:none;position:absolute;right:0;top:48px;width:240px;padding:8px;background:#171717;border:1px solid #383838;border-radius:10px}
+.dropdown.open{display:block}
+.dropdown button{display:block;width:100%;padding:12px;text-align:left;color:white;background:none;border:0;border-radius:6px}
+.dropdown button:hover{background:#292929}
+.hero{min-height:560px;display:flex;align-items:center;padding:70px 7%;background:linear-gradient(90deg,#050505 0%,#050505df 40%,#05050530 100%),url("https://images.unsplash.com/photo-1503376780353-7e6692767b70?auto=format&fit=crop&w=2000&q=85") center/cover}
+.hero-content{max-width:650px}
+.eyebrow{color:var(--red);font-weight:bold;letter-spacing:4px;font-size:12px}
+h1{font-size:clamp(42px,7vw,76px);line-height:.98;text-transform:uppercase}
+.hero p,.section-heading p{color:#bbb;line-height:1.8}
+.primary,.secondary{display:inline-block;padding:12px 18px;margin:8px 8px 0 0;border-radius:6px;font-weight:bold;border:1px solid var(--red)}
+.primary{background:var(--red);color:white}
+.primary:hover{background:#b90009}
+.secondary{background:transparent;color:white}
+section{padding:55px 5%}
+.section-heading{margin-bottom:25px}
+.section-heading h2{font-size:clamp(27px,4vw,38px);text-transform:uppercase;margin:0 0 10px}
+.gallery-tools{display:flex;gap:12px;margin-bottom:24px;flex-wrap:wrap}
+.gallery-tools input,.gallery-tools select,.field input,.field textarea{padding:12px;width:100%;background:#171717;color:white;border:1px solid #393939;border-radius:7px}
+.search-box{flex:1 1 260px}
+.gallery-tools select{flex:0 1 200px}
+.car-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:22px}
+.car-card{overflow:hidden;background:var(--panel);border:1px solid var(--border);border-radius:12px;transition:.2s}
+.car-card:hover{transform:translateY(-4px);border-color:var(--red)}
+.car-card img{width:100%;height:215px;object-fit:cover;background:#222}
+.car-content{padding:17px}
+.car-content h3{margin:0 0 9px;font-size:21px}
+.description{color:var(--muted);font-size:13px;line-height:1.6;overflow-wrap:anywhere}
+.spec-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:9px;margin-top:15px}
+.spec{padding:10px;background:#202020;border-radius:7px;overflow-wrap:anywhere}
+.spec small{display:block;color:#999;font-size:10px;text-transform:uppercase;margin-bottom:5px}
+.spec strong{font-size:13px}
+.tag{color:#ff575d;font-size:12px;font-weight:bold}
+.panel{max-width:950px;margin:auto;padding:24px;background:var(--panel);border:1px solid #383838;border-radius:12px}
+.creator-panel{max-width:900px;margin:auto;display:grid;grid-template-columns:1fr 2fr;gap:30px;padding:28px;background:var(--panel);border:1px solid #333;border-radius:13px}
+.creator-mark{display:grid;place-items:center;min-height:180px;border-radius:10px;background:linear-gradient(135deg,#350000,#111,#292929);font-size:55px;font-weight:900;color:var(--red)}
+.creator-panel p{color:#bbb;line-height:1.8}
+.creator-panel a{color:#ff575d}
+.modal-backdrop{display:none;position:fixed;inset:0;z-index:100;padding:20px;overflow-y:auto;align-items:center;justify-content:center;background:#000c}
+.modal-backdrop.open{display:flex}
+.modal{width:min(700px,100%);padding:25px;background:#141414;border:1px solid #444;border-radius:13px}
+.modal-header{display:flex;align-items:center;justify-content:space-between}
+.close-modal{font-size:25px;color:white;background:none;border:0}
+.form-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}
+.field label{display:block;color:#bbb;font-size:12px;margin-bottom:6px}
+.field.full{grid-column:1/-1}
+.field textarea{min-height:90px;resize:vertical}
+.form-actions{display:flex;gap:10px;flex-wrap:wrap;margin-top:18px}
+.status{font-size:13px;color:#aaa;line-height:1.6;overflow-wrap:anywhere}
+.error{color:#ff8585}
+.success{color:#8be3a3}
+.pending-item{border:1px solid #383838;border-radius:10px;padding:15px;margin:12px 0;display:grid;grid-template-columns:130px 1fr;gap:15px}
+.pending-item img{width:130px;height:100px;object-fit:cover;border-radius:7px}
+.pending-actions{display:flex;gap:8px;flex-wrap:wrap;margin-top:10px}
+.small-btn{padding:8px 12px;border-radius:6px;border:1px solid #555;background:#222;color:white}
+.approve-btn{background:#176b35;border-color:#176b35}
+.reject-btn{background:#681d23;border-color:#681d23}
+footer{text-align:center;padding:25px 5%;border-top:1px solid #292929;color:#888;font-size:13px;line-height:1.8}
+footer strong{color:white}
+[hidden]{display:none!important}
+@media(max-width:900px){.car-grid{grid-template-columns:repeat(2,minmax(0,1fr))}nav{gap:10px}nav a{font-size:12px}}
+@media(max-width:600px){
+ header{padding:12px 4%;gap:8px}.logo{font-size:14px}nav{gap:8px}nav a{font-size:11px}nav a:nth-child(2){display:none}
+ .hero{min-height:460px;padding:50px 6%}section{padding:40px 5%}
+ .car-grid{grid-template-columns:1fr}.creator-panel{grid-template-columns:1fr;padding:20px}
+ .creator-mark{min-height:120px}.form-grid{grid-template-columns:1fr}
+ .field.full{grid-column:auto}.pending-item{grid-template-columns:1fr}
+ .pending-item img{width:100%;height:180px}
 }
 </style>
 </head>
@@ -443,16 +99,13 @@ footer strong { color: white; }
 <body>
 <header>
   <a class="logo" href="#home">SUPER<span>CAR</span> COLLECTION</a>
-
   <nav>
     <a href="#home">Home</a>
     <a href="#collection">Collection</a>
     <a href="#creator">Creator</a>
   </nav>
-
   <div class="menu-wrap">
     <button class="dots" id="menuButton" aria-label="Open menu" aria-expanded="false">⋮</button>
-
     <div class="dropdown" id="menuDropdown">
       <button id="submitMenuButton">🚘 Submit Your Car</button>
       <button id="ownerLoginMenuButton">🔐 Owner Login</button>
@@ -463,73 +116,60 @@ footer strong { color: white; }
 </header>
 
 <main>
-  <section class="hero" id="home">
-    <div class="hero-content">
-      <div class="eyebrow">PERFORMANCE • LUXURY • ENGINEERING</div>
-      <h1>Driven by <span>Power.</span><br>Built for Legends.</h1>
-      <p>Explore extraordinary supercars and hypercars, legendary performance machines, and custom builds submitted by enthusiasts.</p>
-      <a class="primary" href="#collection">Explore Collection</a>
-      <button class="secondary" id="submitHeroButton">Submit Your Car</button>
+<section class="hero" id="home">
+  <div class="hero-content">
+    <div class="eyebrow">PERFORMANCE • LUXURY • ENGINEERING</div>
+    <h1>Driven by <span>Power.</span><br>Built for Legends.</h1>
+    <p>Explore extraordinary supercars and hypercars, legendary performance machines, and custom builds submitted by enthusiasts.</p>
+    <a class="primary" href="#collection">Explore Collection</a>
+    <button class="secondary" id="submitHeroButton">Submit Your Car</button>
+  </div>
+</section>
+
+<section id="collection">
+  <div class="section-heading">
+    <h2>The Car <span>Collection</span></h2>
+    <p>Community submissions appear here only after owner approval.</p>
+  </div>
+  <div class="gallery-tools">
+    <div class="search-box"><input type="search" id="carSearch" placeholder="Search cars, brands, engines..." aria-label="Search cars"></div>
+    <select id="brandFilter" aria-label="Filter by brand"><option value="">All brands</option></select>
+  </div>
+  <p class="status" id="galleryStatus" aria-live="polite">Connecting to the collection…</p>
+  <div class="car-grid" id="carGrid"></div>
+  <p class="status" id="emptyState" hidden>No approved cars match your search yet.</p>
+</section>
+
+<section id="creator">
+  <div class="section-heading">
+    <h2>Meet the <span>Creator</span></h2>
+    <p>A collection made for people who love extraordinary cars.</p>
+  </div>
+  <div class="creator-panel">
+    <div class="creator-mark">SC</div>
+    <div>
+      <h2>P.G.O. Jason Rison</h2>
+      <p>A supercar enthusiast passionate about automotive design, performance, engineering and custom builds.</p>
+      <p>Instagram: <a href="https://www.instagram.com/okithajason/" target="_blank" rel="noopener noreferrer">@okithajason</a></p>
     </div>
-  </section>
+  </div>
+</section>
 
-  <section id="collection">
-    <div class="section-heading">
-      <h2>The Car <span>Collection</span></h2>
-      <p>Community submissions appear here only after owner approval.</p>
-    </div>
-
-    <div class="gallery-tools">
-      <div class="search-box">
-        <input type="search" id="carSearch" placeholder="Search cars, brands, engines..." aria-label="Search cars">
-      </div>
-
-      <select id="brandFilter" aria-label="Filter by brand">
-        <option value="">All brands</option>
-      </select>
-    </div>
-
-    <p class="status" id="galleryStatus" aria-live="polite">Connecting to the collection…</p>
-    <div class="car-grid" id="carGrid"></div>
-    <p class="status" id="emptyState" hidden>No approved cars match your search yet.</p>
-  </section>
-
-  <section id="creator">
-    <div class="section-heading">
-      <h2>Meet the <span>Creator</span></h2>
-      <p>A collection made for people who love extraordinary cars.</p>
-    </div>
-
-    <div class="creator-panel">
-      <div class="creator-mark">SC</div>
-      <div>
-        <h2>P.G.O. Jason Rison</h2>
-        <p>A supercar enthusiast passionate about automotive design, performance, engineering and custom builds.</p>
-        <p>Instagram:
-          <a href="https://www.instagram.com/okithajason/" target="_blank" rel="noopener noreferrer">@okithajason</a>
-        </p>
-      </div>
-    </div>
-  </section>
-
-  <section id="reviewSection" hidden>
-    <div class="section-heading">
-      <h2>Owner <span>Dashboard</span></h2>
-      <p>Review community submissions before they appear in the public gallery.</p>
-    </div>
-
-    <div class="panel">
-      <h3>Pending submissions</h3>
-      <p class="status" id="pendingStatus">Loading submissions…</p>
-      <div id="pendingList"></div>
-
-      <hr style="border-color:#333;margin:25px 0">
-
-      <h3>Published cars</h3>
-      <p class="status">You can remove approved cars from the public gallery here.</p>
-      <div id="publishedList"></div>
-    </div>
-  </section>
+<section id="reviewSection" hidden>
+  <div class="section-heading">
+    <h2>Owner <span>Dashboard</span></h2>
+    <p>Review community submissions before they appear in the public gallery.</p>
+  </div>
+  <div class="panel">
+    <h3>Pending submissions</h3>
+    <p class="status" id="pendingStatus">Loading submissions…</p>
+    <div id="pendingList"></div>
+    <hr style="border-color:#333;margin:25px 0">
+    <h3>Published cars</h3>
+    <p class="status">Remove approved cars from the public gallery here.</p>
+    <div id="publishedList"></div>
+  </div>
+</section>
 </main>
 
 <footer>
@@ -544,67 +184,24 @@ footer strong { color: white; }
       <h2 id="submitTitle">Submit Your Car</h2>
       <button class="close-modal" data-close="submitModal" aria-label="Close">×</button>
     </div>
-
-    <p class="status">Fill in the details and upload a photo. Your submission stays private until the owner approves it. Image limit: 5 MB.</p>
-
+    <p class="status">Fill in the details and upload a photo. Your submission stays private until approved. Image limit: 5 MB.</p>
     <form id="submitForm">
       <div class="form-grid">
-        <div class="field">
-          <label for="sName">Car name *</label>
-          <input id="sName" required maxlength="100" placeholder="Lamborghini Aventador">
-        </div>
-
-        <div class="field">
-          <label for="sBrand">Brand *</label>
-          <input id="sBrand" required maxlength="60" placeholder="Lamborghini">
-        </div>
-
-        <div class="field">
-          <label for="sYear">Model year</label>
-          <input id="sYear" type="number" min="1886" max="2100" placeholder="2024">
-        </div>
-
-        <div class="field">
-          <label for="sHorsepower">Horsepower (hp)</label>
-          <input id="sHorsepower" type="number" min="0" max="10000" placeholder="759">
-        </div>
-
-        <div class="field">
-          <label for="sEngine">Engine</label>
-          <input id="sEngine" maxlength="100" placeholder="6.5L V12">
-        </div>
-
-        <div class="field">
-          <label for="sSpeed">Top speed (km/h)</label>
-          <input id="sSpeed" type="number" min="0" max="1000" placeholder="350">
-        </div>
-
-        <div class="field">
-          <label for="sColor">Exterior colour</label>
-          <input id="sColor" maxlength="60" placeholder="Matte black">
-        </div>
-
-        <div class="field">
-          <label for="sBodyKit">Body kit / modifications</label>
-          <input id="sBodyKit" maxlength="150" placeholder="Carbon-fibre aero kit">
-        </div>
-
-        <div class="field full">
-          <label for="sDescription">Description</label>
-          <textarea id="sDescription" maxlength="500" placeholder="Tell us about this car…"></textarea>
-        </div>
-
-        <div class="field full">
-          <label for="sPhoto">Upload car photo * (JPG, PNG or WebP; max 5 MB)</label>
-          <input id="sPhoto" type="file" accept="image/jpeg,image/png,image/webp" required>
-        </div>
+        <div class="field"><label for="sName">Car name *</label><input id="sName" required maxlength="100" placeholder="Lamborghini Aventador"></div>
+        <div class="field"><label for="sBrand">Brand *</label><input id="sBrand" required maxlength="60" placeholder="Lamborghini"></div>
+        <div class="field"><label for="sYear">Model year</label><input id="sYear" type="number" min="1886" max="2100" placeholder="2024"></div>
+        <div class="field"><label for="sHorsepower">Horsepower (hp)</label><input id="sHorsepower" type="number" min="0" max="10000" placeholder="759"></div>
+        <div class="field"><label for="sEngine">Engine</label><input id="sEngine" maxlength="100" placeholder="6.5L V12"></div>
+        <div class="field"><label for="sSpeed">Top speed (km/h)</label><input id="sSpeed" type="number" min="0" max="1000" placeholder="350"></div>
+        <div class="field"><label for="sColor">Exterior colour</label><input id="sColor" maxlength="60" placeholder="Matte black"></div>
+        <div class="field"><label for="sBodyKit">Body kit / modifications</label><input id="sBodyKit" maxlength="150" placeholder="Carbon-fibre aero kit"></div>
+        <div class="field full"><label for="sDescription">Description</label><textarea id="sDescription" maxlength="500" placeholder="Tell us about this car…"></textarea></div>
+        <div class="field full"><label for="sPhoto">Upload car photo * (JPG, PNG or WebP; max 5 MB)</label><input id="sPhoto" type="file" accept="image/jpeg,image/png,image/webp" required></div>
       </div>
-
       <div class="form-actions">
         <button class="primary" id="submitCarButton" type="submit">Send for Approval</button>
         <button class="secondary" type="button" data-close="submitModal">Cancel</button>
       </div>
-
       <p class="status" id="submitStatus" aria-live="polite"></p>
     </form>
   </div>
@@ -616,19 +213,10 @@ footer strong { color: white; }
       <h2 id="loginTitle">Owner Login</h2>
       <button class="close-modal" data-close="loginModal" aria-label="Close">×</button>
     </div>
-
-    <p class="status">Enter the owner password. Firebase Authentication checks it securely.</p>
-
+    <p class="status">Sign in with the password for your owner account.</p>
     <form id="loginForm">
-      <div class="field">
-        <label for="ownerPassword">Owner password</label>
-        <input id="ownerPassword" type="password" autocomplete="current-password" required>
-      </div>
-
-      <div class="form-actions">
-        <button class="primary" type="submit">Sign in</button>
-      </div>
-
+      <div class="field"><label for="ownerPassword">Owner password</label><input id="ownerPassword" type="password" autocomplete="current-password" required></div>
+      <div class="form-actions"><button class="primary" type="submit">Sign in</button></div>
       <p class="status" id="loginStatus" aria-live="polite"></p>
     </form>
   </div>
@@ -636,319 +224,211 @@ footer strong { color: white; }
 
 <script type="module">
 import { initializeApp } from "https://www.gstatic.com/firebasejs/11.10.0/firebase-app.js";
-
 import {
-  getAuth,
-  signInWithEmailAndPassword,
-  onAuthStateChanged,
-  signOut
+  getAuth, signInWithEmailAndPassword, onAuthStateChanged,
+  signOut, signInAnonymously
 } from "https://www.gstatic.com/firebasejs/11.10.0/firebase-auth.js";
-
 import {
-  getFirestore,
-  collection,
-  addDoc,
-  query,
-  where,
-  onSnapshot,
-  serverTimestamp,
-  updateDoc,
-  deleteDoc,
-  doc
-} from "https://www.gstatic.com/firebasejs/11.10.0/firebase-firestore.js";
+  getDatabase, ref, onValue, push, set, update, remove
+} from "https://www.gstatic.com/firebasejs/11.10.0/firebase-database.js";
 
-import {
-  getStorage,
-  ref,
-  uploadBytes,
-  getDownloadURL,
-  deleteObject
-} from "https://www.gstatic.com/firebasejs/11.10.0/firebase-storage.js";
-
-/* Replace these values with your Firebase web configuration. */
 const firebaseConfig = {
-  apiKey: "YOUR_FIREBASE_API_KEY",
-  authDomain: "YOUR_PROJECT_ID.firebaseapp.com",
-  projectId: "YOUR_PROJECT_ID",
-  storageBucket: "YOUR_STORAGE_BUCKET",
-  messagingSenderId: "YOUR_MESSAGING_SENDER_ID",
-  appId: "YOUR_FIREBASE_APP_ID"
+  apiKey: "AIzaSyD1mKQA4ZkQ9BoYCUpaEFGGi8rwyU8LOPA",
+  authDomain: "super-car-collection.firebaseapp.com",
+  databaseURL: "https://super-car-collection-default-rtdb.firebaseio.com",
+  projectId: "super-car-collection",
+  storageBucket: "super-car-collection.firebasestorage.app",
+  messagingSenderId: "729656979405",
+  appId: "1:729656979405:web:8c743eb5e3c55c14c25e84",
+  measurementId: "G-7JQ0VKWLLM"
 };
 
-/* The owner account's email address. */
 const OWNER_EMAIL = "okitharison8@gmail.com";
+const CLOUDINARY_CLOUD_NAME = "zl6ldx0y";
+const CLOUDINARY_UPLOAD_PRESET = "car_gallery_upload";
 
 const $ = id => document.getElementById(id);
+const esc = value => String(value ?? "").replace(/[&<>"']/g, c => ({
+  "&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"
+}[c]));
 
-const esc = value =>
-  String(value ?? "").replace(/[&<>"']/g, c => ({
-    "&": "&amp;",
-    "<": "&lt;",
-    ">": "&gt;",
-    '"': "&quot;",
-    "'": "&#39;"
-  }[c]));
+const app = initializeApp(firebaseConfig);
+const auth = getAuth(app);
+const db = getDatabase(app);
 
-let app;
-let auth;
-let db;
-let storage;
-let ownerUser = null;
+let currentUser = null;
 let approvedCars = [];
 let pendingCars = [];
+let approvedStarted = false;
+let pendingStarted = false;
 let stopApproved = null;
 let stopPending = null;
+
+$("currentYear").textContent = new Date().getFullYear();
 
 function message(id, text, type = "") {
   $(id).textContent = text;
   $(id).className = "status " + type;
 }
-
+function owner() {
+  return !!currentUser && currentUser.email === OWNER_EMAIL;
+}
 function openModal(id) {
   $(id).classList.add("open");
 }
-
 function closeModal(id) {
   $(id).classList.remove("open");
 }
-
-function isConfigured() {
-  return firebaseConfig.apiKey !== "YOUR_FIREBASE_API_KEY" &&
-    firebaseConfig.projectId !== "YOUR_PROJECT_ID" &&
-    firebaseConfig.appId !== "YOUR_FIREBASE_APP_ID";
+function updateMenu() {
+  $("ownerLoginMenuButton").hidden = owner();
+  $("reviewMenuButton").hidden = !owner();
+  $("signOutMenuButton").hidden = !owner();
 }
-
-function owner() {
-  return !!ownerUser && ownerUser.email === OWNER_EMAIL;
-}
-
-$("currentYear").textContent = new Date().getFullYear();
 
 $("menuButton").addEventListener("click", () => {
-  const open = $("menuDropdown").classList.toggle("open");
-  $("menuButton").setAttribute("aria-expanded", String(open));
+  const opened = $("menuDropdown").classList.toggle("open");
+  $("menuButton").setAttribute("aria-expanded", String(opened));
 });
-
 document.addEventListener("click", e => {
   if (!e.target.closest(".menu-wrap")) {
     $("menuDropdown").classList.remove("open");
     $("menuButton").setAttribute("aria-expanded", "false");
   }
 });
-
 $("submitMenuButton").addEventListener("click", () => {
   $("menuDropdown").classList.remove("open");
   openModal("submitModal");
 });
-
-$("submitHeroButton").addEventListener("click", () => {
-  openModal("submitModal");
-});
-
+$("submitHeroButton").addEventListener("click", () => openModal("submitModal"));
 $("ownerLoginMenuButton").addEventListener("click", () => {
   $("menuDropdown").classList.remove("open");
   openModal("loginModal");
 });
-
 $("reviewMenuButton").addEventListener("click", () => {
   $("menuDropdown").classList.remove("open");
   $("reviewSection").hidden = false;
-  $("reviewSection").scrollIntoView({ behavior: "smooth" });
+  $("reviewSection").scrollIntoView({behavior:"smooth"});
 });
-
 $("signOutMenuButton").addEventListener("click", async () => {
   try {
     await signOut(auth);
   } catch (e) {
-    alert(e.message);
+    alert("Sign out failed: " + e.message);
   }
 });
-
-document.querySelectorAll("[data-close]").forEach(button => {
-  button.addEventListener("click", () => closeModal(button.dataset.close));
-});
-
-document.querySelectorAll(".modal-backdrop").forEach(modal => {
+document.querySelectorAll("[data-close]").forEach(button =>
+  button.addEventListener("click", () => closeModal(button.dataset.close))
+);
+document.querySelectorAll(".modal-backdrop").forEach(modal =>
   modal.addEventListener("click", e => {
     if (e.target === modal) closeModal(modal.id);
-  });
-});
-
+  })
+);
 $("carSearch").addEventListener("input", renderGallery);
 $("brandFilter").addEventListener("change", renderGallery);
 
-if (!isConfigured()) {
-  message(
-    "galleryStatus",
-    "Firebase setup required: add your Firebase web config to this file, then publish it."
-  );
-  $("carGrid").innerHTML = "";
-} else {
-  try {
-    app = initializeApp(firebaseConfig);
-    auth = getAuth(app);
-    db = getFirestore(app);
-    storage = getStorage(app);
+onAuthStateChanged(auth, async user => {
+  currentUser = user;
+  updateMenu();
 
-    startApprovedListener();
-
-    onAuthStateChanged(auth, user => {
-      ownerUser = user && user.email === OWNER_EMAIL ? user : null;
-      updateMenu();
-
-      if (owner()) {
-        startPendingListener();
-        $("reviewSection").hidden = false;
-        renderPending();
-        renderPublished();
-      } else {
-        if (stopPending) {
-          stopPending();
-          stopPending = null;
-        }
-
-        pendingCars = [];
-        $("reviewSection").hidden = true;
-      }
-    });
-  } catch (e) {
-    message(
-      "galleryStatus",
-      "Firebase could not start. Check your Firebase configuration."
-    );
-    console.error(e);
+  if (!user) {
+    try {
+      await signInAnonymously(auth);
+    } catch (e) {
+      message("galleryStatus", "Could not connect. Check that Anonymous Authentication is enabled.");
+      console.error(e);
+    }
+    return;
   }
-}
 
-function updateMenu() {
-  const signed = owner();
+  startApprovedListener();
 
-  $("ownerLoginMenuButton").hidden = signed;
-  $("reviewMenuButton").hidden = !signed;
-  $("signOutMenuButton").hidden = !signed;
-}
+  if (owner()) {
+    startPendingListener();
+    $("reviewSection").hidden = false;
+    renderPending();
+    renderPublished();
+  } else {
+    if (stopPending) stopPending();
+    stopPending = null;
+    pendingStarted = false;
+    pendingCars = [];
+    $("reviewSection").hidden = true;
+  }
+});
 
 function startApprovedListener() {
-  const q = query(
-    collection(db, "cars"),
-    where("status", "==", "approved")
-  );
+  if (approvedStarted) return;
+  approvedStarted = true;
 
-  stopApproved = onSnapshot(q, snapshot => {
-    approvedCars = snapshot.docs.map(d => ({
-      id: d.id,
-      ...d.data()
-    }));
-
+  stopApproved = onValue(ref(db, "approvedCars"), snapshot => {
+    const data = snapshot.val() || {};
+    approvedCars = Object.entries(data).map(([id, car]) => ({id, ...car}));
     renderGallery();
     renderPublished();
-  }, err => {
-    message(
-      "galleryStatus",
-      "Could not load cars. Check Firestore rules and configuration."
-    );
-    console.error(err);
+  }, error => {
+    message("galleryStatus", "Could not load the collection. Check Realtime Database rules.");
+    console.error(error);
   });
 }
 
 function startPendingListener() {
-  if (stopPending) stopPending();
+  if (!owner() || pendingStarted) return;
+  pendingStarted = true;
 
-  const q = query(
-    collection(db, "cars"),
-    where("status", "==", "pending")
-  );
-
-  stopPending = onSnapshot(q, snapshot => {
-    pendingCars = snapshot.docs.map(d => ({
-      id: d.id,
-      ...d.data()
-    }));
-
+  stopPending = onValue(ref(db, "pendingCars"), snapshot => {
+    if (!owner()) return;
+    const data = snapshot.val() || {};
+    pendingCars = Object.entries(data).map(([id, car]) => ({id, ...car}));
     renderPending();
-  }, err => {
-    message(
-      "pendingStatus",
-      "Could not load submissions. Check owner permissions."
-    );
-    console.error(err);
+  }, error => {
+    message("pendingStatus", "Could not load submissions. Check owner permissions.");
+    console.error(error);
   });
 }
 
 function specs(car) {
   const items = [
-    ["Horsepower", car.horsepower ? `${car.horsepower} hp` : "Not provided"],
-    ["Top speed", car.speed ? `${car.speed} km/h` : "Not provided"],
+    ["Horsepower", car.horsepower ? car.horsepower + " hp" : "Not provided"],
+    ["Top speed", car.speed ? car.speed + " km/h" : "Not provided"],
     ["Engine", car.engine || "Not provided"],
     ["Colour", car.color || "Not provided"],
     ["Body kit", car.bodyKit || "Not provided"],
     ["Year", car.year || "Not provided"]
   ];
-
-  return items.map(([key, value]) =>
-    `<div class="spec">
-      <small>${esc(key)}</small>
-      <strong>${esc(value)}</strong>
-    </div>`
+  return items.map(([key,value]) =>
+    `<div class="spec"><small>${esc(key)}</small><strong>${esc(value)}</strong></div>`
   ).join("");
 }
 
 function renderGallery() {
   const term = $("carSearch").value.trim().toLowerCase();
   const chosen = $("brandFilter").value;
-
-  const brands = [
-    ...new Set(approvedCars.map(car => car.brand).filter(Boolean))
-  ].sort();
-
-  const old = $("brandFilter").value;
+  const brands = [...new Set(approvedCars.map(car => car.brand).filter(Boolean))].sort();
 
   $("brandFilter").innerHTML =
     '<option value="">All brands</option>' +
-    brands.map(brand =>
-      `<option value="${esc(brand)}">${esc(brand)}</option>`
-    ).join("");
+    brands.map(brand => `<option value="${esc(brand)}">${esc(brand)}</option>`).join("");
+  $("brandFilter").value = brands.includes(chosen) ? chosen : "";
 
-  $("brandFilter").value = brands.includes(old) ? old : "";
-
+  const filterBrand = $("brandFilter").value;
   const list = approvedCars.filter(car =>
-    (!chosen || car.brand === chosen) &&
-    [
-      car.name,
-      car.brand,
-      car.engine,
-      car.description,
-      car.bodyKit,
-      car.color
-    ].join(" ").toLowerCase().includes(term)
+    (!filterBrand || car.brand === filterBrand) &&
+    [car.name,car.brand,car.engine,car.description,car.bodyKit,car.color]
+      .join(" ").toLowerCase().includes(term)
   );
 
   $("galleryStatus").textContent =
     `${list.length} approved car${list.length === 1 ? "" : "s"} in the collection`;
-
   $("emptyState").hidden = list.length > 0;
 
   $("carGrid").innerHTML = list.map(car => `
     <article class="car-card">
-      <img
-        src="${esc(car.photoURL || "")}"
-        alt="${esc(car.name)}"
-        loading="lazy"
-        onerror="this.style.display='none'"
-      >
-
+      <img src="${esc(car.photoURL)}" alt="${esc(car.name)}" loading="lazy">
       <div class="car-content">
         <h3>${esc(car.name)}</h3>
-
-        <div class="tag">
-          ${esc(car.brand || "Car")}
-          ${car.year ? "· " + esc(car.year) : ""}
-        </div>
-
-        <p class="description">
-          ${esc(car.description || "Community-submitted car.")}
-        </p>
-
+        <div class="tag">${esc(car.brand || "Car")} ${car.year ? "· " + esc(car.year) : ""}</div>
+        <p class="description">${esc(car.description || "Community-submitted car.")}</p>
         <div class="spec-grid">${specs(car)}</div>
       </div>
     </article>
@@ -957,164 +437,124 @@ function renderGallery() {
 
 function renderPending() {
   if (!owner()) return;
-
   $("pendingStatus").textContent =
     `${pendingCars.length} submission${pendingCars.length === 1 ? "" : "s"} waiting for review.`;
 
-  $("pendingList").innerHTML = pendingCars.length
-    ? pendingCars.map(car => `
-      <div class="pending-item">
-        <img
-          src="${esc(car.photoURL || "")}"
-          alt="${esc(car.name)}"
-          onerror="this.style.display='none'"
-        >
-
-        <div>
-          <h3>${esc(car.name)}</h3>
-
-          <p class="status">
-            ${esc(car.brand || "")}
-            ${car.year ? "· " + esc(car.year) : ""}
-          </p>
-
-          <p class="description">
-            ${esc(car.description || "No description.")}
-          </p>
-
-          <p class="status">
-            Engine: ${esc(car.engine || "Not provided")}
-            · HP: ${esc(car.horsepower || "Not provided")}
-          </p>
-
-          <div class="pending-actions">
-            <button class="small-btn approve-btn" data-approve="${esc(car.id)}">
-              Approve
-            </button>
-
-            <button class="small-btn reject-btn" data-reject="${esc(car.id)}">
-              Reject
-            </button>
-          </div>
+  $("pendingList").innerHTML = pendingCars.length ? pendingCars.map(car => `
+    <div class="pending-item">
+      <img src="${esc(car.photoURL)}" alt="${esc(car.name)}">
+      <div>
+        <h3>${esc(car.name)}</h3>
+        <p class="status">${esc(car.brand || "")} ${car.year ? "· " + esc(car.year) : ""}</p>
+        <p class="description">${esc(car.description || "No description.")}</p>
+        <p class="status">Engine: ${esc(car.engine || "Not provided")} · HP: ${esc(car.horsepower || "Not provided")}</p>
+        <div class="pending-actions">
+          <button class="small-btn approve-btn" data-approve="${esc(car.id)}">Approve</button>
+          <button class="small-btn reject-btn" data-reject="${esc(car.id)}">Reject</button>
         </div>
       </div>
-    `).join("")
-    : '<p class="status">No pending submissions.</p>';
+    </div>
+  `).join("") : '<p class="status">No pending submissions.</p>';
 
-  $("pendingList").querySelectorAll("[data-approve]").forEach(button => {
-    button.addEventListener("click", () =>
-      reviewCar(button.dataset.approve, "approved")
-    );
-  });
-
-  $("pendingList").querySelectorAll("[data-reject]").forEach(button => {
-    button.addEventListener("click", () =>
-      reviewCar(button.dataset.reject, "rejected")
-    );
-  });
+  $("pendingList").querySelectorAll("[data-approve]").forEach(button =>
+    button.addEventListener("click", () => reviewCar(button.dataset.approve, true))
+  );
+  $("pendingList").querySelectorAll("[data-reject]").forEach(button =>
+    button.addEventListener("click", () => reviewCar(button.dataset.reject, false))
+  );
 }
 
 function renderPublished() {
   if (!owner()) return;
-
-  $("publishedList").innerHTML = approvedCars.length
-    ? approvedCars.map(car => `
-      <div class="pending-item">
-        <img
-          src="${esc(car.photoURL || "")}"
-          alt="${esc(car.name)}"
-          onerror="this.style.display='none'"
-        >
-
-        <div>
-          <h3>${esc(car.name)}</h3>
-          <p class="status">${esc(car.brand || "")}</p>
-
-          <button class="small-btn reject-btn" data-delete="${esc(car.id)}">
-            Remove from gallery
-          </button>
-        </div>
+  $("publishedList").innerHTML = approvedCars.length ? approvedCars.map(car => `
+    <div class="pending-item">
+      <img src="${esc(car.photoURL)}" alt="${esc(car.name)}">
+      <div>
+        <h3>${esc(car.name)}</h3>
+        <p class="status">${esc(car.brand || "")}</p>
+        <button class="small-btn reject-btn" data-delete="${esc(car.id)}">Remove from gallery</button>
       </div>
-    `).join("")
-    : '<p class="status">No published cars yet.</p>';
+    </div>
+  `).join("") : '<p class="status">No published cars yet.</p>';
 
-  $("publishedList").querySelectorAll("[data-delete]").forEach(button => {
+  $("publishedList").querySelectorAll("[data-delete]").forEach(button =>
     button.addEventListener("click", async () => {
-      if (!owner() || !confirm("Remove this car from the public gallery?")) {
-        return;
-      }
-
+      if (!owner() || !confirm("Remove this car from the public gallery?")) return;
       try {
-        const car = approvedCars.find(item => item.id === button.dataset.delete);
-
-        await deleteDoc(doc(db, "cars", car.id));
-
-        if (car.storagePath) {
-          try {
-            await deleteObject(ref(storage, car.storagePath));
-          } catch (e) {
-            console.warn("Image cleanup failed", e);
-          }
-        }
+        await remove(ref(db, "approvedCars/" + button.dataset.delete));
       } catch (e) {
         alert("Could not remove car: " + e.message);
       }
-    });
-  });
+    })
+  );
 }
 
-async function reviewCar(id, statusValue) {
+async function reviewCar(id, approve) {
   if (!owner()) return;
+  const car = pendingCars.find(item => item.id === id);
+  if (!car) return;
 
   try {
-    await updateDoc(doc(db, "cars", id), {
-      status: statusValue,
-      reviewedAt: serverTimestamp()
-    });
+    if (approve) {
+      // Publish first, then remove the private pending record.
+      await set(ref(db, "approvedCars/" + id), {
+        ...car,
+        status: "approved",
+        reviewedAt: Date.now()
+      });
+    }
+    await remove(ref(db, "pendingCars/" + id));
   } catch (e) {
-    alert("Could not update submission: " + e.message);
+    alert("Could not update submission. Check the Realtime Database rules: " + e.message);
   }
+}
+
+async function uploadPhoto(file) {
+  const url = `https://api.cloudinary.com/v1_1/${CLOUDINARY_CLOUD_NAME}/image/upload`;
+  const body = new FormData();
+  body.append("file", file);
+  body.append("upload_preset", CLOUDINARY_UPLOAD_PRESET);
+  body.append("folder", "super-car-collection");
+
+  const response = await fetch(url, {method:"POST", body});
+  const result = await response.json();
+
+  if (!response.ok) {
+    throw new Error(result.error?.message || "Cloudinary photo upload failed.");
+  }
+  if (!result.secure_url) throw new Error("Cloudinary did not return a photo URL.");
+  return result.secure_url;
 }
 
 $("submitForm").addEventListener("submit", async e => {
   e.preventDefault();
 
-  if (!isConfigured()) {
-    message("submitStatus", "Firebase is not configured yet.", "error");
-    return;
-  }
-
   const file = $("sPhoto").files[0];
-
   if (!file) {
     message("submitStatus", "Please choose a car photo.", "error");
     return;
   }
-
-  if (!["image/jpeg", "image/png", "image/webp"].includes(file.type)) {
-    message("submitStatus", "Please upload a JPG, PNG or WebP image.", "error");
+  if (!["image/jpeg","image/png","image/webp"].includes(file.type)) {
+    message("submitStatus", "Upload a JPG, PNG or WebP image.", "error");
     return;
   }
-
   if (file.size > 5 * 1024 * 1024) {
     message("submitStatus", "The photo must be 5 MB or smaller.", "error");
+    return;
+  }
+  if (!auth.currentUser) {
+    message("submitStatus", "Connecting to the database. Please try again in a moment.", "error");
     return;
   }
 
   const button = $("submitCarButton");
   button.disabled = true;
-  button.textContent = "Uploading…";
+  button.textContent = "Uploading photo…";
+  message("submitStatus", "Uploading your photo. Please wait…");
 
   try {
-    const imageId = crypto.randomUUID();
-    const storagePath = `submissions/${imageId}`;
-    const imageRef = ref(storage, storagePath);
-
-    await uploadBytes(imageRef, file, {
-      contentType: file.type
-    });
-
-    const photoURL = await getDownloadURL(imageRef);
+    const photoURL = await uploadPhoto(file);
+    const newRef = push(ref(db, "pendingCars"));
 
     const car = {
       name: $("sName").value.trim(),
@@ -1127,28 +567,16 @@ $("submitForm").addEventListener("submit", async e => {
       bodyKit: $("sBodyKit").value.trim(),
       description: $("sDescription").value.trim(),
       photoURL,
-      storagePath,
       status: "pending",
-      createdAt: serverTimestamp()
+      createdAt: Date.now()
     };
 
-    await addDoc(collection(db, "cars"), car);
-
+    await set(newRef, car);
     $("submitForm").reset();
-
-    message(
-      "submitStatus",
-      "Submitted successfully! Your car will appear after the owner approves it.",
-      "success"
-    );
+    message("submitStatus", "Submitted successfully! Your car will appear after the owner approves it.", "success");
   } catch (err) {
     console.error(err);
-
-    message(
-      "submitStatus",
-      "Submission failed. Check Firebase setup, Storage rules and billing requirements. " + err.message,
-      "error"
-    );
+    message("submitStatus", "Submission failed: " + err.message, "error");
   } finally {
     button.disabled = false;
     button.textContent = "Send for Approval";
@@ -1157,43 +585,22 @@ $("submitForm").addEventListener("submit", async e => {
 
 $("loginForm").addEventListener("submit", async e => {
   e.preventDefault();
-
-  if (!isConfigured()) {
-    message("loginStatus", "Firebase is not configured yet.", "error");
-    return;
-  }
-
   const password = $("ownerPassword").value;
 
   try {
-    const credential = await signInWithEmailAndPassword(
-      auth,
-      OWNER_EMAIL,
-      password
-    );
-
-    if (credential.user.email !== OWNER_EMAIL) {
-      await signOut(auth);
-      throw new Error("This account is not the configured owner.");
-    }
-
+    await signInWithEmailAndPassword(auth, OWNER_EMAIL, password);
     $("loginForm").reset();
-
     message("loginStatus", "Signed in successfully.", "success");
     closeModal("loginModal");
   } catch (err) {
     console.error(err);
-
-    message(
-      "loginStatus",
-      "Login failed. Check that the owner account exists and the password is correct.",
-      "error"
-    );
+    message("loginStatus", "Login failed. Check the owner account, password and Email/Password sign-in setting.", "error");
   }
 });
 </script>
 </body>
 </html>
+
 
 
 
