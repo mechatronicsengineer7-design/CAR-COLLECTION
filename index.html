@@ -35,6 +35,109 @@
     <span>POWER. LUXURY. PERFORMANCE.</span>
   </div>
 </section>
+    ```html
+<section class="car-gallery" id="cars">
+  <div class="gallery-heading">
+    <p>BUILT TO STAND OUT</p>
+    <h2>MODIFIED SUPERCARS</h2>
+    <span>Luxury. Power. Pure perfection.</span>
+  </div>
+
+  <div class="car-grid">
+
+    <article class="car-card">
+      <img src="images/lamborghini.jpg" alt="Modified Lamborghini" loading="lazy">
+      <div class="car-info">
+        <span>01 / SUPERCAR</span>
+        <h3>Lamborghini</h3>
+        <p>Aggressive design. Extreme performance.</p>
+      </div>
+    </article>
+
+    <article class="car-card">
+      <img src="images/ferrari.jpg" alt="Modified Ferrari" loading="lazy">
+      <div class="car-info">
+        <span>02 / SUPERCAR</span>
+        <h3>Ferrari</h3>
+        <p>Italian style with racing spirit.</p>
+      </div>
+    </article>
+
+    <article class="car-card">
+      <img src="images/bmw.jpg" alt="Modified BMW" loading="lazy">
+      <div class="car-info">
+        <span>03 / PERFORMANCE</span>
+        <h3>BMW</h3>
+        <p>Custom body kits and sporty looks.</p>
+      </div>
+    </article>
+
+    <article class="car-card">
+      <img src="images/bugatti.jpg" alt="Bugatti hypercar" loading="lazy">
+      <div class="car-info">
+        <span>04 / HYPERCAR</span>
+        <h3>Bugatti</h3>
+        <p>Luxury engineering without limits.</p>
+      </div>
+    </article>
+
+    <article class="car-card">
+      <img src="images/mclaren.jpg" alt="Modified McLaren" loading="lazy">
+      <div class="car-info">
+        <span>05 / SUPERCAR</span>
+        <h3>McLaren</h3>
+        <p>Lightweight design. Track-inspired style.</p>
+      </div>
+    </article>
+
+    <article class="car-card">
+      <img src="images/rolls-royce.jpg" alt="Customized Rolls-Royce" loading="lazy">
+      <div class="car-info">
+        <span>06 / ULTRA LUXURY</span>
+        <h3>Rolls-Royce</h3>
+        <p>Elegant luxury with a custom touch.</p>
+      </div>
+    </article>
+
+    <article class="car-card">
+      <img src="images/porsche.jpg" alt="Modified Porsche" loading="lazy">
+      <div class="car-info">
+        <span>07 / SPORTS CAR</span>
+        <h3>Porsche</h3>
+        <p>Timeless shape. Performance attitude.</p>
+      </div>
+    </article>
+
+    <article class="car-card">
+      <img src="images/mercedes.jpg" alt="Modified Mercedes-Benz" loading="lazy">
+      <div class="car-info">
+        <span>08 / LUXURY</span>
+        <h3>Mercedes-Benz</h3>
+        <p>Premium comfort with bold styling.</p>
+      </div>
+    </article>
+
+    <article class="car-card">
+      <img src="images/koenigsegg.jpg" alt="Koenigsegg hypercar" loading="lazy">
+      <div class="car-info">
+        <span>09 / HYPERCAR</span>
+        <h3>Koenigsegg</h3>
+        <p>Engineering at the extreme.</p>
+      </div>
+    </article>
+
+    <article class="car-card">
+      <img src="images/custom.jpg" alt="Custom modified sports car" loading="lazy">
+      <div class="car-info">
+        <span>10 / CUSTOM BUILDS</span>
+        <h3>Custom Machines</h3>
+        <p>Unique builds. Unmistakable presence.</p>
+      </div>
+    </article>
+
+  </div>
+</section>
+
 
 <style>
 .supercar-intro {
@@ -899,6 +1002,120 @@
     font-size: 12px;
   }
 </style>
+```css
+/* ===== MODIFIED SUPERCAR GALLERY ===== */
 
+.car-gallery {
+  background: #080808;
+  color: #fff;
+  padding: 65px 6%;
+  font-family: Arial, sans-serif;
+}
+
+.gallery-heading {
+  text-align: center;
+  margin-bottom: 40px;
+}
+
+.gallery-heading p {
+  color: #ff3030;
+  font-size: 12px;
+  letter-spacing: 5px;
+  font-weight: bold;
+}
+
+.gallery-heading h2 {
+  font-size: clamp(28px, 4vw, 46px);
+  letter-spacing: 2px;
+  margin: 12px 0;
+}
+
+.gallery-heading span {
+  color: #aaa;
+  font-size: 14px;
+}
+
+.car-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 24px;
+  max-width: 1250px;
+  margin: auto;
+}
+
+.car-card {
+  background: #121212;
+  border: 1px solid #292929;
+  border-radius: 12px;
+  overflow: hidden;
+  transition: transform .3s ease, border-color .3s ease;
+}
+
+.car-card:hover {
+  transform: translateY(-7px);
+  border-color: #ff3030;
+  box-shadow: 0 8px 25px #ff303022;
+}
+
+.car-card img {
+  display: block;
+  width: 100%;
+  height: 220px;
+  object-fit: cover;
+  transition: transform .4s ease;
+}
+
+.car-card:hover img {
+  transform: scale(1.04);
+}
+
+.car-info {
+  padding: 20px;
+}
+
+.car-info span {
+  color: #ff4040;
+  font-size: 10px;
+  letter-spacing: 2px;
+}
+
+.car-info h3 {
+  margin: 12px 0 8px;
+  font-size: 22px;
+}
+
+.car-info p {
+  color: #aaa;
+  font-size: 13px;
+  line-height: 1.6;
+}
+
+/* TABLETS */
+@media (max-width: 850px) {
+  .car-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 15px;
+  }
+
+  .car-card img {
+    height: 180px;
+  }
+}
+
+/* MOBILE PHONES */
+@media (max-width: 520px) {
+  .car-gallery {
+    padding: 45px 15px;
+  }
+
+  .car-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .car-card img {
+    height: 230px;
+  }
+}
+```
 </body>
 </html>
