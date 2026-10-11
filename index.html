@@ -1,67 +1,650 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta name="google-site-verification" content="JwqhdVI-0caULwgUEdO0dUAxkHDhTaJP9x1P9ismCrc">
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
   <title>Super Car Collection</title>
-  <meta name="description" content="Explore a collection of supercars, luxury cars and custom builds.">
+  <meta name="description" content="Explore supercars, luxury cars, custom builds and car videos.">
+
   <link rel="preconnect" href="https://images.unsplash.com">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Orbitron:wght@500;600;700&display=swap" rel="stylesheet">
+
   <style>
-    :root{--bg:#080808;--panel:#141414;--panel-2:#1d1d1d;--line:#343434;--red:#e63946;--red-bright:#ff5964;--text:#f5f5f5;--muted:#b0b0b0;--silver:#d6d6d6}
-    *{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:var(--bg);color:var(--text);font-family:Inter,Arial,sans-serif;line-height:1.6}
-    .hero{min-height:380px;display:grid;place-items:center;text-align:center;padding:70px 20px;background:linear-gradient(120deg,rgba(0,0,0,.95),rgba(45,0,5,.78),rgba(12,12,12,.72)),url('https://images.unsplash.com/photo-1492144534655-ae79c964c9d7?auto=format&fit=crop&w=2000&q=85') center/cover}
-    .hero p{color:var(--red-bright);letter-spacing:5px;font-size:12px;font-weight:700}.hero h1{font:700 clamp(32px,6vw,64px)/1.15 Orbitron,Arial,sans-serif;margin:12px 0;text-transform:uppercase}.hero span{letter-spacing:3px;color:var(--silver);font-size:13px}
-    .wrap{width:min(1180px,calc(100% - 32px));margin:auto}.section-heading{text-align:center;padding:48px 0 22px}.section-heading p{color:var(--red);letter-spacing:3px;font-size:12px;font-weight:700}.section-heading h2{font:600 clamp(24px,4vw,38px) Orbitron,Arial,sans-serif;margin:6px 0}.section-heading span{color:var(--muted)}
-    .tools{display:flex;gap:12px;justify-content:space-between;align-items:center;flex-wrap:wrap;margin:18px 0 26px}.tools input{flex:1;min-width:220px;background:var(--panel-2);border:1px solid #3b3b3b;color:var(--text);border-radius:7px;padding:13px 15px;font:inherit}.tools input:focus{outline:1px solid var(--red)}
-    .grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:22px}.card{background:var(--panel);border:1px solid var(--line);border-radius:10px;overflow:hidden;transition:transform .2s,border-color .2s}.card:hover{transform:translateY(-4px);border-color:var(--red)}.car-image{height:220px;background:linear-gradient(135deg,#202020,#350b10,#151515);overflow:hidden}.car-image img{width:100%;height:100%;object-fit:cover;display:block;transition:transform .35s}.card:hover .car-image img{transform:scale(1.04)}.card-body{padding:19px}.tag{color:var(--red-bright);font-size:11px;font-weight:700;letter-spacing:2px;text-transform:uppercase}.card h3{font:600 19px Orbitron,Arial,sans-serif;margin:8px 0}.card p{color:#c0c0c0;font-size:14px;margin:0}
-    .empty{display:none;color:var(--muted);text-align:center;padding:28px}.creator-footer{text-align:center;background:linear-gradient(180deg,#111,#050505);border-top:2px solid var(--red);padding:42px 20px 20px;margin-top:60px}.creator-footer h2{font:600 21px Orbitron,Arial,sans-serif;letter-spacing:2px}.creator-footer .label{color:var(--red-bright);font-size:12px;letter-spacing:3px;margin-top:24px}.creator-footer h3{font-size:22px;margin:8px}.creator-footer p{color:#c0c0c0}.creator-footer a{color:var(--red-bright);text-decoration:none}.creator-footer a:hover{color:white}.footer-bottom{border-top:1px solid #343434;margin:28px auto 0;padding-top:16px;color:#777;font-size:12px}
-    @media(max-width:850px){.grid{grid-template-columns:repeat(2,minmax(0,1fr))}}@media(max-width:560px){.grid{grid-template-columns:1fr}.hero{min-height:320px}.car-image{height:230px}.hero span{letter-spacing:1.5px}}
+    :root {
+      --bg: #080808;
+      --panel: #141414;
+      --panel-2: #1d1d1d;
+      --line: #343434;
+      --red: #e63946;
+      --red-bright: #ff5964;
+      --text: #f5f5f5;
+      --muted: #b0b0b0;
+      --silver: #d6d6d6;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      margin: 0;
+      background: var(--bg);
+      color: var(--text);
+      font-family: Inter, Arial, sans-serif;
+      line-height: 1.6;
+    }
+
+    a {
+      color: inherit;
+    }
+
+    /* Navigation */
+    .navbar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 20px;
+      padding: 17px 6%;
+      background: #0d0d0d;
+      border-bottom: 1px solid var(--line);
+      position: sticky;
+      top: 0;
+      z-index: 10;
+    }
+
+    .logo {
+      font: 700 17px Orbitron, Arial, sans-serif;
+      color: var(--red-bright);
+      text-decoration: none;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 22px;
+      flex-wrap: wrap;
+    }
+
+    .nav-links a {
+      color: var(--silver);
+      text-decoration: none;
+      font-size: 13px;
+      transition: color 0.2s;
+    }
+
+    .nav-links a:hover {
+      color: var(--red-bright);
+    }
+
+    /* Hero */
+    .hero {
+      min-height: 430px;
+      display: grid;
+      place-items: center;
+      text-align: center;
+      padding: 70px 20px;
+      background:
+        linear-gradient(
+          120deg,
+          rgba(0, 0, 0, 0.94),
+          rgba(45, 0, 5, 0.76),
+          rgba(12, 12, 12, 0.7)
+        ),
+        url('https://images.unsplash.com/photo-1492144534655-ae79c964c9d7?auto=format&fit=crop&w=2000&q=85')
+        center / cover;
+    }
+
+    .hero .eyebrow {
+      color: var(--red-bright);
+      letter-spacing: 5px;
+      font-size: 12px;
+      font-weight: 700;
+    }
+
+    .hero h1 {
+      font: 700 clamp(32px, 6vw, 64px)/1.15 Orbitron, Arial, sans-serif;
+      margin: 12px 0;
+      text-transform: uppercase;
+    }
+
+    .hero .subtitle {
+      letter-spacing: 3px;
+      color: var(--silver);
+      font-size: 13px;
+    }
+
+    .hero-button {
+      display: inline-block;
+      margin-top: 24px;
+      padding: 12px 23px;
+      background: var(--red);
+      color: white;
+      text-decoration: none;
+      font-size: 13px;
+      font-weight: 700;
+      border-radius: 5px;
+      transition: background 0.2s, transform 0.2s;
+    }
+
+    .hero-button:hover {
+      background: var(--red-bright);
+      transform: translateY(-2px);
+    }
+
+    .wrap {
+      width: min(1180px, calc(100% - 32px));
+      margin: auto;
+    }
+
+    /* Section headings */
+    .section-heading {
+      text-align: center;
+      padding: 52px 0 22px;
+    }
+
+    .section-heading .eyebrow {
+      color: var(--red);
+      letter-spacing: 3px;
+      font-size: 12px;
+      font-weight: 700;
+    }
+
+    .section-heading h2 {
+      font: 600 clamp(24px, 4vw, 38px) Orbitron, Arial, sans-serif;
+      margin: 7px 0;
+    }
+
+    .section-heading p {
+      color: var(--muted);
+      margin: 8px 0;
+    }
+
+    /* Video section */
+    .video-section {
+      padding-bottom: 12px;
+    }
+
+    .video-box {
+      position: relative;
+      width: 100%;
+      aspect-ratio: 16 / 9;
+      background: #000;
+      border: 1px solid #4a2226;
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: 0 0 28px rgba(230, 57, 70, 0.12);
+    }
+
+    .video-box iframe {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      border: 0;
+    }
+
+    .video-caption {
+      text-align: center;
+      color: var(--muted);
+      font-size: 13px;
+      margin: 14px 0 0;
+    }
+
+    /* Search */
+    .tools {
+      display: flex;
+      gap: 12px;
+      margin: 18px 0 26px;
+    }
+
+    .tools input {
+      width: 100%;
+      background: var(--panel-2);
+      border: 1px solid #3b3b3b;
+      color: var(--text);
+      border-radius: 7px;
+      padding: 14px 15px;
+      font: inherit;
+    }
+
+    .tools input:focus {
+      outline: 1px solid var(--red);
+      border-color: var(--red);
+    }
+
+    .tools input::placeholder {
+      color: #999;
+    }
+
+    /* Car gallery */
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 22px;
+    }
+
+    .card {
+      background: var(--panel);
+      border: 1px solid var(--line);
+      border-radius: 10px;
+      overflow: hidden;
+      transition: transform 0.2s, border-color 0.2s;
+    }
+
+    .card:hover {
+      transform: translateY(-4px);
+      border-color: var(--red);
+    }
+
+    .car-image {
+      height: 220px;
+      background: linear-gradient(135deg, #202020, #350b10, #151515);
+      overflow: hidden;
+    }
+
+    .car-image img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      transition: transform 0.35s;
+    }
+
+    .card:hover .car-image img {
+      transform: scale(1.05);
+    }
+
+    .card-body {
+      padding: 19px;
+    }
+
+    .tag {
+      color: var(--red-bright);
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+    }
+
+    .card h3 {
+      font: 600 19px Orbitron, Arial, sans-serif;
+      margin: 8px 0;
+    }
+
+    .card p {
+      color: #c0c0c0;
+      font-size: 14px;
+      margin: 0;
+    }
+
+    .empty {
+      display: none;
+      color: var(--muted);
+      text-align: center;
+      padding: 28px;
+    }
+
+    /* Creator footer */
+    .creator-footer {
+      text-align: center;
+      background: linear-gradient(180deg, #111, #050505);
+      border-top: 2px solid var(--red);
+      padding: 42px 20px 20px;
+      margin-top: 65px;
+    }
+
+    .creator-footer h2 {
+      font: 600 21px Orbitron, Arial, sans-serif;
+      letter-spacing: 2px;
+    }
+
+    .creator-footer .label {
+      color: var(--red-bright);
+      font-size: 12px;
+      letter-spacing: 3px;
+      margin-top: 24px;
+    }
+
+    .creator-footer h3 {
+      font-size: 22px;
+      margin: 8px;
+    }
+
+    .creator-footer p {
+      color: #c0c0c0;
+    }
+
+    .creator-footer a {
+      color: var(--red-bright);
+      text-decoration: none;
+    }
+
+    .creator-footer a:hover {
+      color: white;
+    }
+
+    .footer-bottom {
+      border-top: 1px solid #343434;
+      margin: 28px auto 0;
+      padding-top: 16px;
+      color: #777;
+      font-size: 12px;
+    }
+
+    @media (max-width: 850px) {
+      .grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+
+      .navbar {
+        padding: 15px 4%;
+      }
+    }
+
+    @media (max-width: 560px) {
+      .grid {
+        grid-template-columns: 1fr;
+      }
+
+      .navbar {
+        position: static;
+        flex-direction: column;
+      }
+
+      .nav-links {
+        justify-content: center;
+        gap: 15px;
+      }
+
+      .hero {
+        min-height: 340px;
+      }
+
+      .hero .subtitle {
+        letter-spacing: 1.5px;
+      }
+
+      .car-image {
+        height: 230px;
+      }
+    }
   </style>
 </head>
+
 <body>
-  <section class="hero">
-    <div><p>WELCOME TO</p><h1>Super Car Collection</h1><span>POWER. LUXURY. PERFORMANCE.</span></div>
-  </section>
+
+  <!-- Navigation -->
+  <nav class="navbar">
+    <a href="#" class="logo">SUPER CARS</a>
+
+    <div class="nav-links">
+      <a href="#home">Home</a>
+      <a href="#video">Car Video</a>
+      <a href="#cars">Collection</a>
+      <a href="#creator">Creator</a>
+    </div>
+  </nav>
+
+  <!-- Hero -->
+  <header class="hero" id="home">
+    <div>
+      <p class="eyebrow">WELCOME TO</p>
+      <h1>Super Car Collection</h1>
+      <p class="subtitle">POWER. LUXURY. PERFORMANCE.</p>
+      <a href="#cars" class="hero-button">EXPLORE THE CARS</a>
+    </div>
+  </header>
+
   <main class="wrap">
-    <section class="section-heading" id="cars"><p>BUILT TO STAND OUT</p><h2>THE CAR COLLECTION</h2><span>From iconic supercars to bold custom machines.</span></section>
-    <div class="tools"><input id="carSearch" type="search" placeholder="Search Lamborghini, BMW, Porsche..." aria-label="Search cars"></div>
-    <section class="grid" id="gallery">
-      <article class="card"><div class="car-image"><img src="https://images.unsplash.com/photo-1511919884226-fd3cad34687c?auto=format&fit=crop&w=1000&q=85" alt="Sports car on the road" loading="lazy"></div><div class="card-body"><span class="tag">Supercar</span><h3>Lamborghini</h3><p>Aggressive styling, dramatic lines and thrilling performance.</p></div></article>
-      <article class="card"><div class="car-image"><img src="https://images.unsplash.com/photo-1492144534655-ae79c964c9d7?auto=format&fit=crop&w=1000&q=85" alt="Luxury sports car" loading="lazy" onerror="this.onerror=null;this.src='https://images.unsplash.com/photo-1492144534655-ae79c964c9d7?auto=format&fit=crop&w=1000&q=85'"></div><div class="card-body"><span class="tag">Italian performance</span><h3>Ferrari</h3><p>Race-inspired design with a legendary performance spirit.</p></div></article>
-      <article class="card"><div class="car-image"><img src="https://images.unsplash.com/photo-1555215695-3004980ad54e?auto=format&fit=crop&w=1000&q=85" alt="BMW performance car" loading="lazy"></div><div class="card-body"><span class="tag">Performance</span><h3>BMW M</h3><p>Sporty handling, powerful engines and custom body kits.</p></div></article>
-      <article class="card"><div class="car-image"><img src="https://images.unsplash.com/photo-1544829099-b9a0c07fad1a?auto=format&fit=crop&w=1000&q=85" alt="Exotic hypercar" loading="lazy"></div><div class="card-body"><span class="tag">Hypercar</span><h3>Bugatti</h3><p>Exceptional engineering blended with unmistakable luxury.</p></div></article>
-      <article class="card"><div class="car-image"><img src="https://images.unsplash.com/photo-1503376780353-7e6692767b70?auto=format&fit=crop&w=1000&q=85" alt="Porsche sports car" loading="lazy"></div><div class="card-body"><span class="tag">Sports car</span><h3>Porsche</h3><p>Timeless design and precision built for driving excitement.</p></div></article>
-      <article class="card"><div class="car-image"><img src="https://images.unsplash.com/photo-1552519507-da3b142c6e3d?auto=format&fit=crop&w=1000&q=85" alt="Red performance car" loading="lazy"></div><div class="card-body"><span class="tag">Custom builds</span><h3>Modified Machines</h3><p>Bold wheels, lowered stances and standout styling ideas.</p></div></article>
-      <article class="card"><div class="car-image"><img src="https://images.unsplash.com/photo-1504215680853-026ed2a45def?auto=format&fit=crop&w=1000&q=85" alt="Luxury sports car detail" loading="lazy"></div><div class="card-body"><span class="tag">Supercar</span><h3>McLaren</h3><p>Lightweight design and track-inspired performance.</p></div></article>
-      <article class="card"><div class="car-image"><img src="https://images.unsplash.com/photo-1502161254066-6c74afbf07aa?auto=format&fit=crop&w=1000&q=85" alt="Luxury car" loading="lazy"></div><div class="card-body"><span class="tag">Ultra luxury</span><h3>Rolls-Royce</h3><p>Elegant presence, handcrafted details and effortless comfort.</p></div></article>
-      <article class="card"><div class="car-image"><img src="https://images.unsplash.com/photo-1617814076367-b759c7d7e738?auto=format&fit=crop&w=1000&q=85" alt="Mercedes luxury car" loading="lazy"></div><div class="card-body"><span class="tag">Luxury</span><h3>Mercedes-Benz</h3><p>Premium comfort paired with bold modern design.</p></div></article>
-      <article class="card"><div class="car-image"><img src="https://images.unsplash.com/photo-1493238792000-8113da705763?auto=format&fit=crop&w=1000&q=85" alt="Sports car collection" loading="lazy"></div><div class="card-body"><span class="tag">Hypercar</span><h3>Koenigsegg</h3><p>Innovative engineering and extreme performance ambition.</p></div></article>
+
+    <!-- Featured video -->
+    <section class="video-section" id="video">
+      <div class="section-heading">
+        <span class="eyebrow">WATCH AND ENJOY</span>
+        <h2>FEATURED CAR VIDEO</h2>
+        <p>Experience the world of performance cars.</p>
+      </div>
+
+      <div class="video-box">
+        <iframe
+          src="https://www.youtube-nocookie.com/embed/AG93KfmCY40"
+          title="Featured car video"
+          loading="lazy"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+          referrerpolicy="strict-origin-when-cross-origin"
+          allowfullscreen>
+        </iframe>
+      </div>
+
+      <p class="video-caption">
+        Turn on the sound using the video player controls.
+      </p>
     </section>
-    <p class="empty" id="noResults">No cars match your search. Try another name.</p>
+
+    <!-- Car collection -->
+    <section id="cars">
+      <div class="section-heading">
+        <span class="eyebrow">BUILT TO STAND OUT</span>
+        <h2>THE CAR COLLECTION</h2>
+        <p>From iconic supercars to bold custom machines.</p>
+      </div>
+
+      <div class="tools">
+        <input
+          id="carSearch"
+          type="search"
+          placeholder="Search Lamborghini, BMW, Porsche..."
+          aria-label="Search cars">
+      </div>
+
+      <div class="grid" id="gallery">
+
+        <article class="card">
+          <div class="car-image">
+            <img
+              src="https://images.unsplash.com/photo-1511919884226-fd3cad34687c?auto=format&fit=crop&w=1000&q=85"
+              alt="Sports car on the road"
+              loading="lazy">
+          </div>
+          <div class="card-body">
+            <span class="tag">Supercar</span>
+            <h3>Lamborghini</h3>
+            <p>Aggressive styling, dramatic lines and thrilling performance.</p>
+          </div>
+        </article>
+
+        <article class="card">
+          <div class="car-image">
+            <img
+              src="https://images.unsplash.com/photo-1492144534655-ae79c964c9d7?auto=format&fit=crop&w=1000&q=85"
+              alt="Luxury sports car"
+              loading="lazy">
+          </div>
+          <div class="card-body">
+            <span class="tag">Italian Performance</span>
+            <h3>Ferrari</h3>
+            <p>Race-inspired design with a legendary performance spirit.</p>
+          </div>
+        </article>
+
+        <article class="card">
+          <div class="car-image">
+            <img
+              src="https://images.unsplash.com/photo-1555215695-3004980ad54e?auto=format&fit=crop&w=1000&q=85"
+              alt="BMW performance car"
+              loading="lazy">
+          </div>
+          <div class="card-body">
+            <span class="tag">Performance</span>
+            <h3>BMW M</h3>
+            <p>Sporty handling, powerful engines and custom body kits.</p>
+          </div>
+        </article>
+
+        <article class="card">
+          <div class="car-image">
+            <img
+              src="https://images.unsplash.com/photo-1544829099-b9a0c07fad1a?auto=format&fit=crop&w=1000&q=85"
+              alt="Exotic car"
+              loading="lazy">
+          </div>
+          <div class="card-body">
+            <span class="tag">Hypercar</span>
+            <h3>Bugatti</h3>
+            <p>Exceptional engineering blended with unmistakable luxury.</p>
+          </div>
+        </article>
+
+        <article class="card">
+          <div class="car-image">
+            <img
+              src="https://images.unsplash.com/photo-1503376780353-7e6692767b70?auto=format&fit=crop&w=1000&q=85"
+              alt="Porsche sports car"
+              loading="lazy">
+          </div>
+          <div class="card-body">
+            <span class="tag">Sports Car</span>
+            <h3>Porsche</h3>
+            <p>Timeless design and precision built for driving excitement.</p>
+          </div>
+        </article>
+
+        <article class="card">
+          <div class="car-image">
+            <img
+              src="https://images.unsplash.com/photo-1552519507-da3b142c6e3d?auto=format&fit=crop&w=1000&q=85"
+              alt="Red performance car"
+              loading="lazy">
+          </div>
+          <div class="card-body">
+            <span class="tag">Custom Builds</span>
+            <h3>Modified Machines</h3>
+            <p>Bold wheels, lowered stances and standout styling ideas.</p>
+          </div>
+        </article>
+
+        <article class="card">
+          <div class="car-image">
+            <img
+              src="https://images.unsplash.com/photo-1504215680853-026ed2a45def?auto=format&fit=crop&w=1000&q=85"
+              alt="Performance car"
+              loading="lazy">
+          </div>
+          <div class="card-body">
+            <span class="tag">Supercar</span>
+            <h3>McLaren</h3>
+            <p>Lightweight design and track-inspired performance.</p>
+          </div>
+        </article>
+
+        <article class="card">
+          <div class="car-image">
+            <img
+              src="https://images.unsplash.com/photo-1502161254066-6c74afbf07aa?auto=format&fit=crop&w=1000&q=85"
+              alt="Luxury car"
+              loading="lazy">
+          </div>
+          <div class="card-body">
+            <span class="tag">Ultra Luxury</span>
+            <h3>Rolls-Royce</h3>
+            <p>Elegant presence, handcrafted details and comfort.</p>
+          </div>
+        </article>
+
+        <article class="card">
+          <div class="car-image">
+            <img
+              src="https://images.unsplash.com/photo-1617814076367-b759c7d7e738?auto=format&fit=crop&w=1000&q=85"
+              alt="Mercedes-Benz car"
+              loading="lazy">
+          </div>
+          <div class="card-body">
+            <span class="tag">Luxury</span>
+            <h3>Mercedes-Benz</h3>
+            <p>Premium comfort paired with bold modern design.</p>
+          </div>
+        </article>
+
+        <article class="card">
+          <div class="car-image">
+            <img
+              src="https://images.unsplash.com/photo-1493238792000-8113da705763?auto=format&fit=crop&w=1000&q=85"
+              alt="Sports car"
+              loading="lazy">
+          </div>
+          <div class="card-body">
+            <span class="tag">Hypercar</span>
+            <h3>Koenigsegg</h3>
+            <p>Innovative engineering and extreme performance ambition.</p>
+          </div>
+        </article>
+
+      </div>
+
+      <p class="empty" id="noResults">
+        No cars match your search. Try another name.
+      </p>
+    </section>
+
   </main>
-  <footer class="creator-footer">
-    <h2>SUPER CAR COLLECTION</h2><p class="label">ABOUT THE CREATOR</p><h3>P.G.O. Jason Rison</h3>
-    <p>I'm a supercar enthusiast who loves luxury cars,<br>custom builds and performance machines.</p>
-    <a href="https://www.instagram.com/okithajason/" target="_blank" rel="noopener noreferrer">📸 Follow me on Instagram @okithajason</a>
-    <div class="footer-bottom">© 2026 Super Car Collection · Built for car lovers</div>
+
+  <!-- Creator information -->
+  <footer class="creator-footer" id="creator">
+    <h2>SUPER CAR COLLECTION</h2>
+
+    <p class="label">ABOUT THE CREATOR</p>
+
+    <h3>P.G.O. Jason Rison</h3>
+
+    <p>
+      I'm a supercar enthusiast who loves luxury cars,<br>
+      custom builds and performance machines.
+    </p>
+
+    <a
+      href="https://www.instagram.com/okithajason/"
+      target="_blank"
+      rel="noopener noreferrer">
+      📸 Follow me on Instagram @okithajason
+    </a>
+
+    <div class="footer-bottom">
+      © 2026 Super Car Collection · Built for car lovers
+    </div>
   </footer>
+
+  <!-- Car search -->
   <script>
     const searchInput = document.getElementById('carSearch');
     const cards = [...document.querySelectorAll('#gallery .card')];
     const noResults = document.getElementById('noResults');
+
     searchInput.addEventListener('input', () => {
       const query = searchInput.value.trim().toLowerCase();
       let visible = 0;
+
       cards.forEach(card => {
         const matches = card.textContent.toLowerCase().includes(query);
+
         card.style.display = matches ? '' : 'none';
-        if (matches) visible++;
+
+        if (matches) {
+          visible++;
+        }
       });
+
       noResults.style.display = visible ? 'none' : 'block';
     });
   </script>
+
 </body>
 </html>
+
+
