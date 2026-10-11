@@ -21,6 +21,53 @@
   *{box-sizing:border-box;}
   html,body{margin:0;padding:0;}
   body{
+    
+<section class="supercar-intro">
+  <video autoplay muted loop playsinline
+         poster="car-cover.jpg">
+    <source src="supercars.mp4" type="video/mp4">
+  </video>
+
+  <div class="intro-title">
+    <p>WELCOME TO</p>
+    <h1>SUPER CAR COLLECTION</h1>
+    <span>POWER. LUXURY. PERFORMANCE.</span>
+  </div>
+</section>
+
+<style>
+.supercar-intro {
+  position: relative;
+  height: 420px;
+  overflow: hidden;
+  background: #080808;
+  color: white;
+  display: grid;
+  place-items: center;
+  text-align: center;
+}
+.supercar-intro video {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  opacity: .65;
+}
+.intro-title {
+  position: relative;
+  padding: 20px;
+  text-shadow: 0 2px 12px #000;
+}
+.intro-title p,
+.intro-title span {
+  letter-spacing: 4px;
+  color: #ff5252;
+}
+.intro-title h1 {
+  font-size: clamp(28px, 5vw, 54px);
+}
+
+
     background:var(--bg);
     color:var(--ink);
     font-family:'Inter',sans-serif;
