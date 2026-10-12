@@ -14,9 +14,128 @@
 *{box-sizing:border-box}
 html{scroll-behavior:smooth}
 body{margin:0;background:var(--bg);color:var(--text);font-family:Arial,Helvetica,sans-serif}
+body.intro-open{overflow:hidden}
 a{color:inherit;text-decoration:none}
 button,input,select,textarea{font:inherit}
 button{cursor:pointer}
+
+/* CINEMATIC WELCOME OPENING */
+.intro-screen{
+ position:fixed;inset:0;z-index:9999;display:flex;align-items:center;
+ justify-content:center;text-align:center;overflow:hidden;
+ background:#030303;
+ opacity:1;visibility:visible;
+ transition:opacity .9s ease,visibility .9s ease;
+}
+.intro-screen.leaving{opacity:0;visibility:hidden;pointer-events:none}
+.intro-bg{
+ position:absolute;inset:0;
+ background-image:
+ linear-gradient(180deg,rgba(0,0,0,.45),rgba(0,0,0,.15) 45%,#000 100%),
+ linear-gradient(90deg,rgba(0,0,0,.65),transparent 50%,rgba(0,0,0,.65)),
+ url("https://images.unsplash.com/photo-1503376780353-7e6692767b70?auto=format&fit=crop&w=2200&q=90");
+ background-position:center;background-size:cover;
+ transform:scale(1.12);
+ animation:introZoom 12s ease-out forwards;
+}
+.intro-screen:before{
+ content:"";position:absolute;inset:0;z-index:1;pointer-events:none;
+ background:radial-gradient(ellipse at center,transparent 15%,rgba(0,0,0,.65) 100%);
+}
+.intro-scan{
+ position:absolute;z-index:2;top:0;bottom:0;width:2px;
+ background:linear-gradient(transparent,#e50914,transparent);
+ box-shadow:0 0 18px #e50914;
+ opacity:.65;animation:scanAcross 5s ease-in-out infinite alternate;
+}
+.intro-content{
+ position:relative;z-index:3;width:min(1000px,92%);
+ padding:30px 15px;animation:introRise 1.2s ease both;
+}
+.intro-line{
+ display:flex;align-items:center;justify-content:center;gap:15px;
+ color:#fff;letter-spacing:7px;font-size:clamp(10px,2vw,15px);
+ font-weight:400;margin-bottom:17px;
+}
+.intro-line:before,.intro-line:after{
+ content:"";width:clamp(25px,7vw,80px);height:2px;background:var(--red);
+ box-shadow:0 0 12px var(--red);
+}
+.intro-title{
+ margin:0;font-size:clamp(38px,9vw,105px);font-weight:1000;
+ font-style:italic;letter-spacing:-3px;line-height:.95;
+ color:#fff;text-transform:uppercase;
+ text-shadow:0 4px 0 #777,0 10px 35px #000;
+}
+.intro-title span{
+ display:block;color:var(--red);font-size:.65em;letter-spacing:.32em;
+ margin-top:15px;text-shadow:0 0 24px #e5091477;
+}
+.intro-tagline{
+ margin:28px 0;color:#eee;letter-spacing:clamp(3px,1vw,9px);
+ font-size:clamp(10px,2vw,14px);
+}
+.intro-button{
+ position:relative;overflow:hidden;display:inline-flex;align-items:center;
+ justify-content:center;gap:16px;padding:16px 32px;
+ border:2px solid var(--red);border-radius:50px;
+ background:rgba(0,0,0,.55);color:#fff;font-weight:bold;
+ letter-spacing:2px;font-size:13px;
+ box-shadow:0 0 20px #e5091440,inset 0 0 12px #e5091415;
+ transition:background .3s,transform .3s,box-shadow .3s;
+}
+.intro-button:before{
+ content:"";position:absolute;top:0;left:-120%;width:80%;height:100%;
+ background:linear-gradient(90deg,transparent,#ffffff35,transparent);
+ transform:skewX(-25deg);transition:left .6s;
+}
+.intro-button:hover:before{left:140%}
+.intro-button:hover{
+ background:var(--red);transform:translateY(-3px);
+ box-shadow:0 0 35px #e5091480;
+}
+.intro-button span{font-size:21px}
+.intro-bottom{
+ margin-top:35px;color:#aaa;font-size:10px;letter-spacing:4px;
+ animation:softPulse 2s infinite;
+}
+.intro-bottom i{
+ display:block;width:19px;height:30px;border:1px solid #aaa;
+ border-radius:12px;margin:0 auto 12px;position:relative;
+}
+.intro-bottom i:before{
+ content:"";position:absolute;top:6px;left:8px;width:1px;height:6px;
+ background:#fff;animation:scrollDot 1.5s infinite;
+}
+.intro-corner{
+ position:absolute;z-index:3;bottom:22px;left:25px;
+ color:#aaa;font-size:10px;letter-spacing:2px;text-align:left;
+}
+.intro-corner b{color:var(--red)}
+.intro-top-right{
+ position:absolute;z-index:3;top:25px;right:25px;
+ font-size:10px;letter-spacing:3px;color:#bbb;
+}
+.intro-top-right span{color:var(--red)}
+@keyframes introZoom{from{transform:scale(1.12)}to{transform:scale(1)}}
+@keyframes introRise{from{opacity:0;transform:translateY(30px)}to{opacity:1;transform:translateY(0)}}
+@keyframes scanAcross{from{left:8%;opacity:.15}to{left:92%;opacity:.7}}
+@keyframes softPulse{0%,100%{opacity:.55}50%{opacity:1}}
+@keyframes scrollDot{0%{transform:translateY(0);opacity:1}100%{transform:translateY(9px);opacity:0}}
+@media(prefers-reduced-motion:reduce){
+ *,*:before,*:after{animation:none!important;scroll-behavior:auto!important;transition:none!important}
+}
+@media(max-width:600px){
+ .intro-bg{background-position:52% center}
+ .intro-title{letter-spacing:-1px}
+ .intro-line{letter-spacing:4px}
+ .intro-tagline{line-height:2;letter-spacing:3px}
+ .intro-button{padding:14px 23px;font-size:11px}
+ .intro-corner{left:12px;bottom:12px;font-size:8px}
+ .intro-top-right{right:12px;top:12px;font-size:8px}
+}
+
+/* EXISTING WEBSITE */
 header{position:sticky;top:0;z-index:50;display:flex;align-items:center;justify-content:space-between;gap:15px;padding:15px 5%;background:#090909f5;border-bottom:1px solid #292929}
 .logo{font-size:20px;font-weight:900;letter-spacing:1px}
 .logo span,h1 span,.section-heading span{color:var(--red)}
@@ -96,7 +215,30 @@ footer strong{color:white}
 </style>
 </head>
 
-<body>
+<body class="intro-open">
+
+<!-- WELCOME SCREEN -->
+<div class="intro-screen" id="introScreen">
+  <div class="intro-bg"></div>
+  <div class="intro-scan"></div>
+  <div class="intro-top-right">SC<span> / </span>EST. 2026</div>
+
+  <div class="intro-content">
+    <div class="intro-line">WELCOME TO</div>
+    <h1 class="intro-title">SUPERCAR<span>GALLERY</span></h1>
+    <p class="intro-tagline">EXPLORE&nbsp; • &nbsp;DREAM&nbsp; • &nbsp;DRIVE</p>
+    <button class="intro-button" id="enterGalleryButton">
+      ENTER GALLERY <span>→</span>
+    </button>
+    <div class="intro-bottom">
+      <i></i>
+      SCROLL DOWN TO EXPLORE
+    </div>
+  </div>
+
+  <div class="intro-corner"><b>SUPERCAR</b> COLLECTION<br>BUILT FOR CAR ENTHUSIASTS</div>
+</div>
+
 <header>
   <a class="logo" href="#home">SUPER<span>CAR</span> COLLECTION</a>
   <nav>
@@ -229,8 +371,18 @@ import {
   signOut, signInAnonymously
 } from "https://www.gstatic.com/firebasejs/11.10.0/firebase-auth.js";
 import {
-  getDatabase, ref, onValue, push, set, update, remove
+  getDatabase, ref, onValue, push, set, remove
 } from "https://www.gstatic.com/firebasejs/11.10.0/firebase-database.js";
+
+/* WELCOME OPENING BUTTON */
+const introScreen = document.getElementById("introScreen");
+document.getElementById("enterGalleryButton").addEventListener("click", () => {
+  introScreen.classList.add("leaving");
+  document.body.classList.remove("intro-open");
+  setTimeout(() => {
+    introScreen.style.display = "none";
+  }, 950);
+});
 
 const firebaseConfig = {
   apiKey: "AIzaSyD1mKQA4ZkQ9BoYCUpaEFGGi8rwyU8LOPA",
@@ -496,7 +648,6 @@ async function reviewCar(id, approve) {
 
   try {
     if (approve) {
-      // Publish first, then remove the private pending record.
       await set(ref(db, "approvedCars/" + id), {
         ...car,
         status: "approved",
@@ -600,6 +751,7 @@ $("loginForm").addEventListener("submit", async e => {
 </script>
 </body>
 </html>
+
 
 
 
