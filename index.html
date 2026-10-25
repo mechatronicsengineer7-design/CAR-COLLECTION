@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -6,8 +5,8 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="theme-color" content="#090909">
 <meta name="google-site-verification" content="JwqhdVI-0caULwgUEdO0dUAxkHDhTaJP9x1P9ismCrc">
-<meta name="description" content="Super Car Collection — supercars, hypercars and custom builds.">
-<title>Super Car Collection</title>
+<meta name="description" content="Speed Legends — explore legendary cars, superbikes and performance machines.">
+<title>SPEED LEGENDS</title>
 
 <style>
 :root{--red:#e50914;--bg:#090909;--panel:#151515;--border:#333;--text:#f5f5f5;--muted:#aaa}
@@ -23,8 +22,7 @@ button{cursor:pointer}
 .intro-screen{
  position:fixed;inset:0;z-index:9999;display:flex;align-items:center;
  justify-content:center;text-align:center;overflow:hidden;
- background:#030303;
- opacity:1;visibility:visible;
+ background:#030303;opacity:1;visibility:visible;
  transition:opacity .9s ease,visibility .9s ease;
 }
 .intro-screen.leaving{opacity:0;visibility:hidden;pointer-events:none}
@@ -35,8 +33,7 @@ button{cursor:pointer}
  linear-gradient(90deg,rgba(0,0,0,.65),transparent 50%,rgba(0,0,0,.65)),
  url("https://images.unsplash.com/photo-1503376780353-7e6692767b70?auto=format&fit=crop&w=2200&q=90");
  background-position:center;background-size:cover;
- transform:scale(1.12);
- animation:introZoom 12s ease-out forwards;
+ transform:scale(1.12);animation:introZoom 12s ease-out forwards;
 }
 .intro-screen:before{
  content:"";position:absolute;inset:0;z-index:1;pointer-events:none;
@@ -135,7 +132,7 @@ button{cursor:pointer}
  .intro-top-right{right:12px;top:12px;font-size:8px}
 }
 
-/* EXISTING WEBSITE */
+/* WEBSITE DESIGN */
 header{position:sticky;top:0;z-index:50;display:flex;align-items:center;justify-content:space-between;gap:15px;padding:15px 5%;background:#090909f5;border-bottom:1px solid #292929}
 .logo{font-size:20px;font-weight:900;letter-spacing:1px}
 .logo span,h1 span,.section-heading span{color:var(--red)}
@@ -161,7 +158,7 @@ section{padding:55px 5%}
 .section-heading{margin-bottom:25px}
 .section-heading h2{font-size:clamp(27px,4vw,38px);text-transform:uppercase;margin:0 0 10px}
 .gallery-tools{display:flex;gap:12px;margin-bottom:24px;flex-wrap:wrap}
-.gallery-tools input,.gallery-tools select,.field input,.field textarea{padding:12px;width:100%;background:#171717;color:white;border:1px solid #393939;border-radius:7px}
+.gallery-tools input,.gallery-tools select,.field input,.field select,.field textarea{padding:12px;width:100%;background:#171717;color:white;border:1px solid #393939;border-radius:7px}
 .search-box{flex:1 1 260px}
 .gallery-tools select{flex:0 1 200px}
 .car-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:22px}
@@ -221,26 +218,19 @@ footer strong{color:white}
 <div class="intro-screen" id="introScreen">
   <div class="intro-bg"></div>
   <div class="intro-scan"></div>
-  <div class="intro-top-right">SC<span> / </span>EST. 2026</div>
-
+  <div class="intro-top-right">SL<span> / </span>EST. 2026</div>
   <div class="intro-content">
     <div class="intro-line">WELCOME TO</div>
-    <h1 class="intro-title">LUXURY<span>GALLERY</span></h1>
-    <p class="intro-tagline">EXPLORE&nbsp; • &nbsp;DREAM&nbsp; • &nbsp;DRIVE</p>
-    <button class="intro-button" id="enterGalleryButton">
-      ENTER GALLERY <span>→</span>
-    </button>
-    <div class="intro-bottom">
-      <i></i>
-      SELECT ENTER TO EXPLORE
-    </div>
+    <h1 class="intro-title">SPEED<span>LEGENDS</span></h1>
+    <p class="intro-tagline">CARS&nbsp; • &nbsp;BIKES&nbsp; • &nbsp;SPEED&nbsp; • &nbsp;POWER</p>
+    <button class="intro-button" id="enterGalleryButton">ENTER GALLERY <span>→</span></button>
+    <div class="intro-bottom"><i></i>SELECT ENTER TO EXPLORE</div>
   </div>
-
-  <div class="intro-corner"><b>SUPERCAR</b> COLLECTION<br>BUILT FOR CAR ENTHUSIASTS</div>
+  <div class="intro-corner"><b>SPEED</b> LEGENDS<br>BUILT FOR VEHICLE ENTHUSIASTS</div>
 </div>
 
 <header>
-  <a class="logo" href="#home">SUPER<span>CAR</span> COLLECTION</a>
+  <a class="logo" href="#home">SPEED <span>LEGENDS</span></a>
   <nav>
     <a href="#home">Home</a>
     <a href="#collection">Collection</a>
@@ -249,7 +239,7 @@ footer strong{color:white}
   <div class="menu-wrap">
     <button class="dots" id="menuButton" aria-label="Open menu" aria-expanded="false">⋮</button>
     <div class="dropdown" id="menuDropdown">
-      <button id="submitMenuButton">🚘 Submit Your Car</button>
+      <button id="submitMenuButton">🏁 Submit a Vehicle</button>
       <button id="ownerLoginMenuButton">🔐 Owner Login</button>
       <button id="reviewMenuButton" hidden>📝 Review Submissions</button>
       <button id="signOutMenuButton" hidden>Sign out</button>
@@ -260,35 +250,40 @@ footer strong{color:white}
 <main>
 <section class="hero" id="home">
   <div class="hero-content">
-    <div class="eyebrow">PERFORMANCE • LUXURY • ENGINEERING</div>
+    <div class="eyebrow">CARS • BIKES • PERFORMANCE • ENGINEERING</div>
     <h1>Driven by <span>Power.</span><br>Built for Legends.</h1>
-    <p>Explore extraordinary supercars and hypercars, legendary performance machines, and custom builds submitted by enthusiasts.</p>
+    <p>Explore extraordinary supercars, hypercars, superbikes and legendary performance machines, including custom builds submitted by enthusiasts.</p>
     <a class="primary" href="#collection">Explore Collection</a>
-    <button class="secondary" id="submitHeroButton">Submit Your Car</button>
+    <button class="secondary" id="submitHeroButton">Submit a Vehicle</button>
   </div>
 </section>
 
 <section id="collection">
   <div class="section-heading">
-    <h2>The Car <span>Collection</span></h2>
-    <p>Community submissions appear here only after owner approval.</p>
+    <h2>The Speed <span>Collection</span></h2>
+    <p>Discover cars and bikes. Community submissions appear here only after owner approval.</p>
   </div>
   <div class="gallery-tools">
-    <div class="search-box"><input type="search" id="carSearch" placeholder="Search cars, brands, engines..." aria-label="Search cars"></div>
+    <div class="search-box"><input type="search" id="carSearch" placeholder="Search cars, bikes, brands, engines..." aria-label="Search vehicles"></div>
+    <select id="vehicleTypeFilter" aria-label="Filter by vehicle type">
+      <option value="">Cars &amp; bikes</option>
+      <option value="car">Cars</option>
+      <option value="bike">Bikes</option>
+    </select>
     <select id="brandFilter" aria-label="Filter by brand"><option value="">All brands</option></select>
   </div>
   <p class="status" id="galleryStatus" aria-live="polite">Connecting to the collection…</p>
   <div class="car-grid" id="carGrid"></div>
-  <p class="status" id="emptyState" hidden>No approved cars match your search yet.</p>
+  <p class="status" id="emptyState" hidden>No approved vehicles match your search yet.</p>
 </section>
 
 <section id="creator">
   <div class="section-heading">
     <h2>Meet the <span>Creator</span></h2>
-    <p>A collection made for people who love extraordinary cars.</p>
+    <p>A collection made for people who love extraordinary cars, bikes, design and engineering.</p>
   </div>
   <div class="creator-panel">
-    <div class="creator-mark">SC</div>
+    <div class="creator-mark">SL</div>
     <div>
       <h2>P.G.O. Jason Rison</h2>
       <p>A supercar enthusiast passionate about automotive design, performance, engineering and custom builds.</p>
@@ -307,38 +302,39 @@ footer strong{color:white}
     <p class="status" id="pendingStatus">Loading submissions…</p>
     <div id="pendingList"></div>
     <hr style="border-color:#333;margin:25px 0">
-    <h3>Published cars</h3>
-    <p class="status">Remove approved cars from the public gallery here.</p>
+    <h3>Published vehicles</h3>
+    <p class="status">Remove approved vehicles from the public gallery here.</p>
     <div id="publishedList"></div>
   </div>
 </section>
 </main>
 
 <footer>
-  <strong>SUPER CAR COLLECTION</strong><br>
+  <strong>SPEED LEGENDS</strong><br>
   Created by P.G.O. Jason Rison · Instagram @okithajason<br>
-  © <span id="currentYear"></span> Super Car Collection.
+  © <span id="currentYear"></span> Speed Legends.
 </footer>
 
 <div class="modal-backdrop" id="submitModal" role="dialog" aria-modal="true" aria-labelledby="submitTitle">
   <div class="modal">
     <div class="modal-header">
-      <h2 id="submitTitle">Submit Your Car</h2>
+      <h2 id="submitTitle">Submit a Vehicle</h2>
       <button class="close-modal" data-close="submitModal" aria-label="Close">×</button>
     </div>
-    <p class="status">Fill in the details and upload a photo. Your submission stays private until approved. Image limit: 5 MB.</p>
+    <p class="status">Fill in the details and upload a photo of your car or bike. Your submission stays private until approved. Image limit: 5 MB.</p>
     <form id="submitForm">
       <div class="form-grid">
-        <div class="field"><label for="sName">Car name *</label><input id="sName" required maxlength="100" placeholder="Lamborghini Aventador"></div>
-        <div class="field"><label for="sBrand">Brand *</label><input id="sBrand" required maxlength="60" placeholder="Lamborghini"></div>
+        <div class="field"><label for="vehicleType">Vehicle type *</label><select id="vehicleType" required><option value="car">Car</option><option value="bike">Bike / Superbike</option></select></div>
+        <div class="field"><label for="sName">Vehicle name *</label><input id="sName" required maxlength="100" placeholder="Ducati Panigale V4"></div>
+        <div class="field"><label for="sBrand">Brand *</label><input id="sBrand" required maxlength="60" placeholder="Ducati"></div>
         <div class="field"><label for="sYear">Model year</label><input id="sYear" type="number" min="1886" max="2100" placeholder="2024"></div>
         <div class="field"><label for="sHorsepower">Horsepower (hp)</label><input id="sHorsepower" type="number" min="0" max="10000" placeholder="759"></div>
-        <div class="field"><label for="sEngine">Engine</label><input id="sEngine" maxlength="100" placeholder="6.5L V12"></div>
+        <div class="field"><label for="sEngine">Engine / capacity</label><input id="sEngine" maxlength="100" placeholder="1103 cc V4"></div>
         <div class="field"><label for="sSpeed">Top speed (km/h)</label><input id="sSpeed" type="number" min="0" max="1000" placeholder="350"></div>
         <div class="field"><label for="sColor">Exterior colour</label><input id="sColor" maxlength="60" placeholder="Matte black"></div>
-        <div class="field"><label for="sBodyKit">Body kit / modifications</label><input id="sBodyKit" maxlength="150" placeholder="Carbon-fibre aero kit"></div>
-        <div class="field full"><label for="sDescription">Description</label><textarea id="sDescription" maxlength="500" placeholder="Tell us about this car…"></textarea></div>
-        <div class="field full"><label for="sPhoto">Upload car photo * (JPG, PNG or WebP; max 5 MB)</label><input id="sPhoto" type="file" accept="image/jpeg,image/png,image/webp" required></div>
+        <div class="field"><label for="sBodyKit">Body kit / modifications</label><input id="sBodyKit" maxlength="150" placeholder="Carbon-fibre aero kit / exhaust"></div>
+        <div class="field full"><label for="sDescription">Description</label><textarea id="sDescription" maxlength="500" placeholder="Tell us about this vehicle…"></textarea></div>
+        <div class="field full"><label for="sPhoto">Upload vehicle photo * (JPG, PNG or WebP; max 5 MB)</label><input id="sPhoto" type="file" accept="image/jpeg,image/png,image/webp" required></div>
       </div>
       <div class="form-actions">
         <button class="primary" id="submitCarButton" type="submit">Send for Approval</button>
@@ -477,6 +473,7 @@ document.querySelectorAll(".modal-backdrop").forEach(modal =>
   })
 );
 $("carSearch").addEventListener("input", renderGallery);
+$("vehicleTypeFilter").addEventListener("change", renderGallery);
 $("brandFilter").addEventListener("change", renderGallery);
 
 onAuthStateChanged(auth, async user => {
@@ -556,6 +553,7 @@ function specs(car) {
 function renderGallery() {
   const term = $("carSearch").value.trim().toLowerCase();
   const chosen = $("brandFilter").value;
+  const chosenType = $("vehicleTypeFilter").value;
   const brands = [...new Set(approvedCars.map(car => car.brand).filter(Boolean))].sort();
 
   $("brandFilter").innerHTML =
@@ -564,14 +562,16 @@ function renderGallery() {
   $("brandFilter").value = brands.includes(chosen) ? chosen : "";
 
   const filterBrand = $("brandFilter").value;
-  const list = approvedCars.filter(car =>
-    (!filterBrand || car.brand === filterBrand) &&
-    [car.name,car.brand,car.engine,car.description,car.bodyKit,car.color]
-      .join(" ").toLowerCase().includes(term)
-  );
+  const list = approvedCars.filter(car => {
+    const type = car.vehicleType === "bike" ? "bike" : "car";
+    return (!chosenType || type === chosenType) &&
+      (!filterBrand || car.brand === filterBrand) &&
+      [car.name,car.brand,car.engine,car.description,car.bodyKit,car.color,type]
+        .join(" ").toLowerCase().includes(term);
+  });
 
   $("galleryStatus").textContent =
-    `${list.length} approved car${list.length === 1 ? "" : "s"} in the collection`;
+    `${list.length} approved vehicle${list.length === 1 ? "" : "s"} in the collection`;
   $("emptyState").hidden = list.length > 0;
 
   $("carGrid").innerHTML = list.map(car => `
@@ -579,8 +579,8 @@ function renderGallery() {
       <img src="${esc(car.photoURL)}" alt="${esc(car.name)}" loading="lazy">
       <div class="car-content">
         <h3>${esc(car.name)}</h3>
-        <div class="tag">${esc(car.brand || "Car")} ${car.year ? "· " + esc(car.year) : ""}</div>
-        <p class="description">${esc(car.description || "Community-submitted car.")}</p>
+        <div class="tag">${car.vehicleType === "bike" ? "BIKE" : "CAR"} · ${esc(car.brand || (car.vehicleType === "bike" ? "Bike" : "Car"))} ${car.year ? "· " + esc(car.year) : ""}</div>
+        <p class="description">${esc(car.description || "Community-submitted vehicle.")}</p>
         <div class="spec-grid">${specs(car)}</div>
       </div>
     </article>
@@ -665,7 +665,7 @@ async function uploadPhoto(file) {
   const body = new FormData();
   body.append("file", file);
   body.append("upload_preset", CLOUDINARY_UPLOAD_PRESET);
-  body.append("folder", "super-car-collection");
+  body.append("folder", "speed-legends");
 
   const response = await fetch(url, {method:"POST", body});
   const result = await response.json();
@@ -682,7 +682,7 @@ $("submitForm").addEventListener("submit", async e => {
 
   const file = $("sPhoto").files[0];
   if (!file) {
-    message("submitStatus", "Please choose a car photo.", "error");
+    message("submitStatus", "Please choose a vehicle photo.", "error");
     return;
   }
   if (!["image/jpeg","image/png","image/webp"].includes(file.type)) {
@@ -709,6 +709,7 @@ $("submitForm").addEventListener("submit", async e => {
 
     const car = {
       name: $("sName").value.trim(),
+      vehicleType: $("vehicleType").value,
       brand: $("sBrand").value.trim(),
       year: $("sYear").value || "",
       horsepower: $("sHorsepower").value || "",
@@ -724,7 +725,7 @@ $("submitForm").addEventListener("submit", async e => {
 
     await set(newRef, car);
     $("submitForm").reset();
-    message("submitStatus", "Submitted successfully! Your car will appear after the owner approves it.", "success");
+    message("submitStatus", "Submitted successfully! Your vehicle will appear after the owner approves it.", "success");
   } catch (err) {
     console.error(err);
     message("submitStatus", "Submission failed: " + err.message, "error");
@@ -751,8 +752,6 @@ $("loginForm").addEventListener("submit", async e => {
 </script>
 </body>
 </html>
-
-
 
 
 
