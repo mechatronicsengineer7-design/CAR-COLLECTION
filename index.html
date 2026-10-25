@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -9,210 +10,565 @@
 <title>SPEED LEGENDS</title>
 
 <style>
-:root{--red:#e50914;--bg:#090909;--panel:#151515;--border:#333;--text:#f5f5f5;--muted:#aaa}
-*{box-sizing:border-box}
-html{scroll-behavior:smooth}
-body{margin:0;background:var(--bg);color:var(--text);font-family:Arial,Helvetica,sans-serif}
-body.intro-open{overflow:hidden}
-a{color:inherit;text-decoration:none}
-button,input,select,textarea{font:inherit}
-button{cursor:pointer}
-
-/* CINEMATIC WELCOME OPENING */
-.intro-screen{
- position:fixed;inset:0;z-index:9999;display:flex;align-items:center;
- justify-content:center;text-align:center;overflow:hidden;
- background:#030303;opacity:1;visibility:visible;
- transition:opacity .9s ease,visibility .9s ease;
-}
-.intro-screen.leaving{opacity:0;visibility:hidden;pointer-events:none}
-
-/* Porsche and motorcycle background photos */
-.intro-bg{
- position:absolute;inset:0;overflow:hidden;background-color:#030303;
- background-image:
-  linear-gradient(180deg,rgba(0,0,0,.30),rgba(0,0,0,.12) 38%,rgba(0,0,0,.88) 100%),
-  linear-gradient(90deg,rgba(0,0,0,.12),rgba(0,0,0,.15)),
-  url("https://images.unsplash.com/photo-1503376780353-7e6692767b70?auto=format&fit=crop&w=1400&q=90"),
-  url("https://images.unsplash.com/photo-1558981806-ec527fa84c39?auto=format&fit=crop&w=1400&q=90");
- background-repeat:no-repeat;
- background-size:100% 100%,100% 100%,55% 100%,85% 100%;
- background-position:center,center,left center,right center;
- transform:scale(1.08);animation:introZoom 12s ease-out forwards;
-}
-.intro-screen:before{
- content:"";position:absolute;inset:0;z-index:1;pointer-events:none;
- background:radial-gradient(ellipse at center,transparent 15%,rgba(0,0,0,.65) 100%);
-}
-.intro-scan{
- position:absolute;z-index:2;top:0;bottom:0;width:2px;
- background:linear-gradient(transparent,#e50914,transparent);
- box-shadow:0 0 18px #e50914;
- opacity:.65;animation:scanAcross 5s ease-in-out infinite alternate;
-}
-.intro-content{
- position:relative;z-index:3;width:min(1000px,92%);
- padding:30px 15px;animation:introRise 1.2s ease both;
-}
-.intro-line{
- display:flex;align-items:center;justify-content:center;gap:15px;
- color:#fff;letter-spacing:7px;font-size:clamp(10px,2vw,15px);
- font-weight:400;margin-bottom:17px;
-}
-.intro-line:before,.intro-line:after{
- content:"";width:clamp(25px,7vw,80px);height:2px;background:var(--red);
- box-shadow:0 0 12px var(--red);
-}
-.intro-title{
- margin:0;font-size:clamp(38px,9vw,105px);font-weight:1000;
- font-style:italic;letter-spacing:-3px;line-height:.95;
- color:#fff;text-transform:uppercase;
- text-shadow:0 4px 0 #777,0 10px 35px #000;
-}
-.intro-title span{
- display:block;color:var(--red);font-size:.65em;letter-spacing:.32em;
- margin-top:15px;text-shadow:0 0 24px #e5091477;
-}
-.intro-tagline{
- margin:28px 0;color:#eee;letter-spacing:clamp(3px,1vw,9px);
- font-size:clamp(10px,2vw,14px);
-}
-.intro-button{
- position:relative;overflow:hidden;display:inline-flex;align-items:center;
- justify-content:center;gap:16px;padding:16px 32px;
- border:2px solid var(--red);border-radius:50px;
- background:rgba(0,0,0,.55);color:#fff;font-weight:bold;
- letter-spacing:2px;font-size:13px;
- box-shadow:0 0 20px #e5091440,inset 0 0 12px #e5091415;
- transition:background .3s,transform .3s,box-shadow .3s;
-}
-.intro-button:before{
- content:"";position:absolute;top:0;left:-120%;width:80%;height:100%;
- background:linear-gradient(90deg,transparent,#ffffff35,transparent);
- transform:skewX(-25deg);transition:left .6s;
-}
-.intro-button:hover:before{left:140%}
-.intro-button:hover{
- background:var(--red);transform:translateY(-3px);
- box-shadow:0 0 35px #e5091480;
-}
-.intro-button span{font-size:21px}
-.intro-bottom{
- margin-top:35px;color:#aaa;font-size:10px;letter-spacing:4px;
- animation:softPulse 2s infinite;
-}
-.intro-bottom i{
- display:block;width:19px;height:30px;border:1px solid #aaa;
- border-radius:12px;margin:0 auto 12px;position:relative;
-}
-.intro-bottom i:before{
- content:"";position:absolute;top:6px;left:8px;width:1px;height:6px;
- background:#fff;animation:scrollDot 1.5s infinite;
-}
-.intro-corner{
- position:absolute;z-index:3;bottom:22px;left:25px;
- color:#aaa;font-size:10px;letter-spacing:2px;text-align:left;
-}
-.intro-corner b{color:var(--red)}
-.intro-top-right{
- position:absolute;z-index:3;top:25px;right:25px;
- font-size:10px;letter-spacing:3px;color:#bbb;
-}
-.intro-top-right span{color:var(--red)}
-@keyframes introZoom{from{transform:scale(1.12)}to{transform:scale(1)}}
-@keyframes introRise{from{opacity:0;transform:translateY(30px)}to{opacity:1;transform:translateY(0)}}
-@keyframes scanAcross{from{left:8%;opacity:.15}to{left:92%;opacity:.7}}
-@keyframes softPulse{0%,100%{opacity:.55}50%{opacity:1}}
-@keyframes scrollDot{0%{transform:translateY(0);opacity:1}100%{transform:translateY(9px);opacity:0}}
-@media(prefers-reduced-motion:reduce){
- *,*:before,*:after{animation:none!important;scroll-behavior:auto!important;transition:none!important}
-}
-@media(max-width:600px){
- .intro-bg{background-position:52% center}
- .intro-title{letter-spacing:-1px}
- .intro-line{letter-spacing:4px}
- .intro-tagline{line-height:2;letter-spacing:3px}
- .intro-button{padding:14px 23px;font-size:11px}
- .intro-corner{left:12px;bottom:12px;font-size:8px}
- .intro-top-right{right:12px;top:12px;font-size:8px}
+:root {
+  --red: #e50914;
+  --bg: #090909;
+  --panel: #151515;
+  --border: #333;
+  --text: #f5f5f5;
+  --muted: #aaa;
 }
 
-/* WEBSITE DESIGN */
-header{position:sticky;top:0;z-index:50;display:flex;align-items:center;justify-content:space-between;gap:15px;padding:15px 5%;background:#090909f5;border-bottom:1px solid #292929}
-.logo{font-size:20px;font-weight:900;letter-spacing:1px}
-.logo span,h1 span,.section-heading span{color:var(--red)}
-nav{display:flex;gap:18px}
-nav a{font-size:14px;color:#ddd}
-nav a:hover{color:var(--red)}
-.menu-wrap{position:relative}
-.dots{width:42px;height:42px;border:1px solid #444;border-radius:50%;background:#181818;color:white;font-size:24px}
-.dropdown{display:none;position:absolute;right:0;top:48px;width:240px;padding:8px;background:#171717;border:1px solid #383838;border-radius:10px}
-.dropdown.open{display:block}
-.dropdown button{display:block;width:100%;padding:12px;text-align:left;color:white;background:none;border:0;border-radius:6px}
-.dropdown button:hover{background:#292929}
-.hero{min-height:560px;display:flex;align-items:center;padding:70px 7%;background:linear-gradient(90deg,#050505 0%,#050505df 40%,#05050530 100%),url("https://images.unsplash.com/photo-1503376780353-7e6692767b70?auto=format&fit=crop&w=2000&q=85") center/cover}
-.hero-content{max-width:650px}
-.eyebrow{color:var(--red);font-weight:bold;letter-spacing:4px;font-size:12px}
-h1{font-size:clamp(42px,7vw,76px);line-height:.98;text-transform:uppercase}
-.hero p,.section-heading p{color:#bbb;line-height:1.8}
-.primary,.secondary{display:inline-block;padding:12px 18px;margin:8px 8px 0 0;border-radius:6px;font-weight:bold;border:1px solid var(--red)}
-.primary{background:var(--red);color:white}
-.primary:hover{background:#b90009}
-.secondary{background:transparent;color:white}
-section{padding:55px 5%}
-.section-heading{margin-bottom:25px}
-.section-heading h2{font-size:clamp(27px,4vw,38px);text-transform:uppercase;margin:0 0 10px}
-.gallery-tools{display:flex;gap:12px;margin-bottom:24px;flex-wrap:wrap}
-.gallery-tools input,.gallery-tools select,.field input,.field select,.field textarea{padding:12px;width:100%;background:#171717;color:white;border:1px solid #393939;border-radius:7px}
-.search-box{flex:1 1 260px}
-.gallery-tools select{flex:0 1 200px}
-.car-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:22px}
-.car-card{overflow:hidden;background:var(--panel);border:1px solid var(--border);border-radius:12px;transition:.2s}
-.car-card:hover{transform:translateY(-4px);border-color:var(--red)}
-.car-card img{width:100%;height:215px;object-fit:cover;background:#222}
-.car-content{padding:17px}
-.car-content h3{margin:0 0 9px;font-size:21px}
-.description{color:var(--muted);font-size:13px;line-height:1.6;overflow-wrap:anywhere}
-.spec-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:9px;margin-top:15px}
-.spec{padding:10px;background:#202020;border-radius:7px;overflow-wrap:anywhere}
-.spec small{display:block;color:#999;font-size:10px;text-transform:uppercase;margin-bottom:5px}
-.spec strong{font-size:13px}
-.tag{color:#ff575d;font-size:12px;font-weight:bold}
-.panel{max-width:950px;margin:auto;padding:24px;background:var(--panel);border:1px solid #383838;border-radius:12px}
-.creator-panel{max-width:900px;margin:auto;display:grid;grid-template-columns:1fr 2fr;gap:30px;padding:28px;background:var(--panel);border:1px solid #333;border-radius:13px}
-.creator-mark{display:grid;place-items:center;min-height:180px;border-radius:10px;background:linear-gradient(135deg,#350000,#111,#292929);font-size:55px;font-weight:900;color:var(--red)}
-.creator-panel p{color:#bbb;line-height:1.8}
-.creator-panel a{color:#ff575d}
-.modal-backdrop{display:none;position:fixed;inset:0;z-index:100;padding:20px;overflow-y:auto;align-items:center;justify-content:center;background:#000c}
-.modal-backdrop.open{display:flex}
-.modal{width:min(700px,100%);padding:25px;background:#141414;border:1px solid #444;border-radius:13px}
-.modal-header{display:flex;align-items:center;justify-content:space-between}
-.close-modal{font-size:25px;color:white;background:none;border:0}
-.form-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}
-.field label{display:block;color:#bbb;font-size:12px;margin-bottom:6px}
-.field.full{grid-column:1/-1}
-.field textarea{min-height:90px;resize:vertical}
-.form-actions{display:flex;gap:10px;flex-wrap:wrap;margin-top:18px}
-.status{font-size:13px;color:#aaa;line-height:1.6;overflow-wrap:anywhere}
-.error{color:#ff8585}
-.success{color:#8be3a3}
-.pending-item{border:1px solid #383838;border-radius:10px;padding:15px;margin:12px 0;display:grid;grid-template-columns:130px 1fr;gap:15px}
-.pending-item img{width:130px;height:100px;object-fit:cover;border-radius:7px}
-.pending-actions{display:flex;gap:8px;flex-wrap:wrap;margin-top:10px}
-.small-btn{padding:8px 12px;border-radius:6px;border:1px solid #555;background:#222;color:white}
-.approve-btn{background:#176b35;border-color:#176b35}
-.reject-btn{background:#681d23;border-color:#681d23}
-footer{text-align:center;padding:25px 5%;border-top:1px solid #292929;color:#888;font-size:13px;line-height:1.8}
-footer strong{color:white}
-[hidden]{display:none!important}
-@media(max-width:900px){.car-grid{grid-template-columns:repeat(2,minmax(0,1fr))}nav{gap:10px}nav a{font-size:12px}}
-@media(max-width:600px){
- header{padding:12px 4%;gap:8px}.logo{font-size:14px}nav{gap:8px}nav a{font-size:11px}nav a:nth-child(2){display:none}
- .hero{min-height:460px;padding:50px 6%}section{padding:40px 5%}
- .car-grid{grid-template-columns:1fr}.creator-panel{grid-template-columns:1fr;padding:20px}
- .creator-mark{min-height:120px}.form-grid{grid-template-columns:1fr}
- .field.full{grid-column:auto}.pending-item{grid-template-columns:1fr}
- .pending-item img{width:100%;height:180px}
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--text);
+  font-family: Arial, Helvetica, sans-serif;
+}
+body.intro-open { overflow: hidden; }
+a { color: inherit; text-decoration: none; }
+button, input, select, textarea { font: inherit; }
+button { cursor: pointer; }
+
+/* CINEMATIC OPENING SCREEN */
+.intro-screen {
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  overflow: hidden;
+  background: #030303;
+  opacity: 1;
+  visibility: visible;
+  transition: opacity .9s ease, visibility .9s ease;
+}
+.intro-screen.leaving {
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+}
+
+/* The Porsche-and-bike image must be in the same folder as index.html */
+.intro-bg {
+  position: absolute;
+  inset: 0;
+  background:
+    linear-gradient(
+      180deg,
+      rgba(0,0,0,.12),
+      rgba(0,0,0,.25) 45%,
+      rgba(0,0,0,.82) 100%
+    ),
+    url("speed-legends-hero.png") center center / cover no-repeat;
+  transform: scale(1.04);
+  animation: introZoom 12s ease-out forwards;
+}
+.intro-screen::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  pointer-events: none;
+  background: radial-gradient(
+    ellipse at center,
+    transparent 15%,
+    rgba(0,0,0,.48) 100%
+  );
+}
+.intro-scan {
+  position: absolute;
+  z-index: 2;
+  top: 0;
+  bottom: 0;
+  width: 2px;
+  background: linear-gradient(transparent, #e50914, transparent);
+  box-shadow: 0 0 18px #e50914;
+  opacity: .5;
+  animation: scanAcross 5s ease-in-out infinite alternate;
+}
+.intro-content {
+  position: relative;
+  z-index: 3;
+  width: min(1000px, 92%);
+  padding: 30px 15px;
+  animation: introRise 1.2s ease both;
+}
+.intro-line {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 15px;
+  color: #fff;
+  letter-spacing: 7px;
+  font-size: clamp(10px, 2vw, 15px);
+  margin-bottom: 17px;
+}
+.intro-line::before,
+.intro-line::after {
+  content: "";
+  width: clamp(25px, 7vw, 80px);
+  height: 2px;
+  background: var(--red);
+  box-shadow: 0 0 12px var(--red);
+}
+.intro-title {
+  margin: 0;
+  font-size: clamp(38px, 9vw, 105px);
+  font-weight: 1000;
+  font-style: italic;
+  letter-spacing: -3px;
+  line-height: .95;
+  color: #fff;
+  text-transform: uppercase;
+  text-shadow: 0 4px 0 #777, 0 10px 35px #000;
+}
+.intro-title span {
+  display: block;
+  color: var(--red);
+  font-size: .65em;
+  letter-spacing: .32em;
+  margin-top: 15px;
+  text-shadow: 0 0 24px #e5091477;
+}
+.intro-tagline {
+  margin: 28px 0;
+  color: #eee;
+  letter-spacing: clamp(3px, 1vw, 9px);
+  font-size: clamp(10px, 2vw, 14px);
+}
+.intro-button {
+  position: relative;
+  overflow: hidden;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+  padding: 16px 32px;
+  border: 2px solid var(--red);
+  border-radius: 50px;
+  background: rgba(0,0,0,.65);
+  color: #fff;
+  font-weight: bold;
+  letter-spacing: 2px;
+  font-size: 13px;
+  box-shadow: 0 0 20px #e5091440;
+  transition: background .3s, transform .3s, box-shadow .3s;
+}
+.intro-button:hover {
+  background: var(--red);
+  transform: translateY(-3px);
+  box-shadow: 0 0 35px #e5091480;
+}
+.intro-button span { font-size: 21px; }
+.intro-bottom {
+  margin-top: 35px;
+  color: #ddd;
+  font-size: 10px;
+  letter-spacing: 4px;
+  animation: softPulse 2s infinite;
+}
+.intro-bottom i {
+  display: block;
+  width: 19px;
+  height: 30px;
+  border: 1px solid #ddd;
+  border-radius: 12px;
+  margin: 0 auto 12px;
+  position: relative;
+}
+.intro-bottom i::before {
+  content: "";
+  position: absolute;
+  top: 6px;
+  left: 8px;
+  width: 1px;
+  height: 6px;
+  background: #fff;
+  animation: scrollDot 1.5s infinite;
+}
+.intro-corner {
+  position: absolute;
+  z-index: 3;
+  bottom: 22px;
+  left: 25px;
+  color: #ddd;
+  font-size: 10px;
+  letter-spacing: 2px;
+  text-align: left;
+}
+.intro-corner b { color: var(--red); }
+.intro-top-right {
+  position: absolute;
+  z-index: 3;
+  top: 25px;
+  right: 25px;
+  font-size: 10px;
+  letter-spacing: 3px;
+  color: #ddd;
+}
+.intro-top-right span { color: var(--red); }
+
+@keyframes introZoom {
+  from { transform: scale(1.10); }
+  to { transform: scale(1.04); }
+}
+@keyframes introRise {
+  from { opacity: 0; transform: translateY(30px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+@keyframes scanAcross {
+  from { left: 8%; opacity: .15; }
+  to { left: 92%; opacity: .7; }
+}
+@keyframes softPulse {
+  0%, 100% { opacity: .55; }
+  50% { opacity: 1; }
+}
+@keyframes scrollDot {
+  0% { transform: translateY(0); opacity: 1; }
+  100% { transform: translateY(9px); opacity: 0; }
+}
+
+/* HEADER */
+header {
+  position: sticky;
+  top: 0;
+  z-index: 50;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 15px;
+  padding: 15px 5%;
+  background: #090909f5;
+  border-bottom: 1px solid #292929;
+}
+.logo {
+  font-size: 20px;
+  font-weight: 900;
+  letter-spacing: 1px;
+}
+.logo span, h1 span, .section-heading span { color: var(--red); }
+nav { display: flex; gap: 18px; }
+nav a { font-size: 14px; color: #ddd; }
+nav a:hover { color: var(--red); }
+
+.menu-wrap { position: relative; }
+.dots {
+  width: 42px;
+  height: 42px;
+  border: 1px solid #444;
+  border-radius: 50%;
+  background: #181818;
+  color: white;
+  font-size: 24px;
+}
+.dropdown {
+  display: none;
+  position: absolute;
+  right: 0;
+  top: 48px;
+  width: 240px;
+  padding: 8px;
+  background: #171717;
+  border: 1px solid #383838;
+  border-radius: 10px;
+}
+.dropdown.open { display: block; }
+.dropdown button {
+  display: block;
+  width: 100%;
+  padding: 12px;
+  text-align: left;
+  color: white;
+  background: none;
+  border: 0;
+  border-radius: 6px;
+}
+.dropdown button:hover { background: #292929; }
+
+/* HERO */
+.hero {
+  min-height: 560px;
+  display: flex;
+  align-items: center;
+  padding: 70px 7%;
+  background:
+    linear-gradient(90deg, #050505 0%, #050505df 40%, #05050530 100%),
+    url("https://images.unsplash.com/photo-1503376780353-7e6692767b70?auto=format&fit=crop&w=2000&q=85")
+    center / cover;
+}
+.hero-content { max-width: 650px; }
+.eyebrow {
+  color: var(--red);
+  font-weight: bold;
+  letter-spacing: 4px;
+  font-size: 12px;
+}
+h1 {
+  font-size: clamp(42px, 7vw, 76px);
+  line-height: .98;
+  text-transform: uppercase;
+}
+.hero p, .section-heading p {
+  color: #bbb;
+  line-height: 1.8;
+}
+.primary, .secondary {
+  display: inline-block;
+  padding: 12px 18px;
+  margin: 8px 8px 0 0;
+  border-radius: 6px;
+  font-weight: bold;
+  border: 1px solid var(--red);
+}
+.primary { background: var(--red); color: white; }
+.primary:hover { background: #b90009; }
+.secondary { background: transparent; color: white; }
+
+/* COLLECTION */
+section { padding: 55px 5%; }
+.section-heading { margin-bottom: 25px; }
+.section-heading h2 {
+  font-size: clamp(27px, 4vw, 38px);
+  text-transform: uppercase;
+  margin: 0 0 10px;
+}
+.gallery-tools {
+  display: flex;
+  gap: 12px;
+  margin-bottom: 24px;
+  flex-wrap: wrap;
+}
+.gallery-tools input,
+.gallery-tools select,
+.field input,
+.field select,
+.field textarea {
+  padding: 12px;
+  width: 100%;
+  background: #171717;
+  color: white;
+  border: 1px solid #393939;
+  border-radius: 7px;
+}
+.search-box { flex: 1 1 260px; }
+.gallery-tools select { flex: 0 1 200px; }
+
+.car-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 22px;
+}
+.car-card {
+  overflow: hidden;
+  background: var(--panel);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  transition: .2s;
+}
+.car-card:hover {
+  transform: translateY(-4px);
+  border-color: var(--red);
+}
+.car-card img {
+  width: 100%;
+  height: 215px;
+  object-fit: cover;
+  background: #222;
+}
+.car-content { padding: 17px; }
+.car-content h3 { margin: 0 0 9px; font-size: 21px; }
+.description {
+  color: var(--muted);
+  font-size: 13px;
+  line-height: 1.6;
+  overflow-wrap: anywhere;
+}
+.spec-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 9px;
+  margin-top: 15px;
+}
+.spec {
+  padding: 10px;
+  background: #202020;
+  border-radius: 7px;
+  overflow-wrap: anywhere;
+}
+.spec small {
+  display: block;
+  color: #999;
+  font-size: 10px;
+  text-transform: uppercase;
+  margin-bottom: 5px;
+}
+.spec strong { font-size: 13px; }
+.tag { color: #ff575d; font-size: 12px; font-weight: bold; }
+
+/* CREATOR AND DASHBOARD */
+.panel {
+  max-width: 950px;
+  margin: auto;
+  padding: 24px;
+  background: var(--panel);
+  border: 1px solid #383838;
+  border-radius: 12px;
+}
+.creator-panel {
+  max-width: 900px;
+  margin: auto;
+  display: grid;
+  grid-template-columns: 1fr 2fr;
+  gap: 30px;
+  padding: 28px;
+  background: var(--panel);
+  border: 1px solid #333;
+  border-radius: 13px;
+}
+.creator-mark {
+  display: grid;
+  place-items: center;
+  min-height: 180px;
+  border-radius: 10px;
+  background: linear-gradient(135deg, #350000, #111, #292929);
+  font-size: 55px;
+  font-weight: 900;
+  color: var(--red);
+}
+.creator-panel p { color: #bbb; line-height: 1.8; }
+.creator-panel a { color: #ff575d; }
+
+/* MODALS AND FORMS */
+.modal-backdrop {
+  display: none;
+  position: fixed;
+  inset: 0;
+  z-index: 100;
+  padding: 20px;
+  overflow-y: auto;
+  align-items: center;
+  justify-content: center;
+  background: #000c;
+}
+.modal-backdrop.open { display: flex; }
+.modal {
+  width: min(700px, 100%);
+  padding: 25px;
+  background: #141414;
+  border: 1px solid #444;
+  border-radius: 13px;
+}
+.modal-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.close-modal {
+  font-size: 25px;
+  color: white;
+  background: none;
+  border: 0;
+}
+.form-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 12px;
+}
+.field label {
+  display: block;
+  color: #bbb;
+  font-size: 12px;
+  margin-bottom: 6px;
+}
+.field.full { grid-column: 1 / -1; }
+.field textarea { min-height: 90px; resize: vertical; }
+.form-actions { display: flex; gap: 10px; flex-wrap: wrap; margin-top: 18px; }
+.status {
+  font-size: 13px;
+  color: #aaa;
+  line-height: 1.6;
+  overflow-wrap: anywhere;
+}
+.error { color: #ff8585; }
+.success { color: #8be3a3; }
+
+.pending-item {
+  border: 1px solid #383838;
+  border-radius: 10px;
+  padding: 15px;
+  margin: 12px 0;
+  display: grid;
+  grid-template-columns: 130px 1fr;
+  gap: 15px;
+}
+.pending-item img {
+  width: 130px;
+  height: 100px;
+  object-fit: cover;
+  border-radius: 7px;
+}
+.pending-actions { display: flex; gap: 8px; flex-wrap: wrap; margin-top: 10px; }
+.small-btn {
+  padding: 8px 12px;
+  border-radius: 6px;
+  border: 1px solid #555;
+  background: #222;
+  color: white;
+}
+.approve-btn { background: #176b35; border-color: #176b35; }
+.reject-btn { background: #681d23; border-color: #681d23; }
+
+footer {
+  text-align: center;
+  padding: 25px 5%;
+  border-top: 1px solid #292929;
+  color: #888;
+  font-size: 13px;
+  line-height: 1.8;
+}
+footer strong { color: white; }
+[hidden] { display: none !important; }
+
+@media (max-width: 900px) {
+  .car-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  nav { gap: 10px; }
+  nav a { font-size: 12px; }
+}
+@media (max-width: 600px) {
+  header { padding: 12px 4%; gap: 8px; }
+  .logo { font-size: 14px; }
+  nav { gap: 8px; }
+  nav a { font-size: 11px; }
+  nav a:nth-child(2) { display: none; }
+  .hero { min-height: 460px; padding: 50px 6%; }
+  section { padding: 40px 5%; }
+  .car-grid { grid-template-columns: 1fr; }
+  .creator-panel { grid-template-columns: 1fr; padding: 20px; }
+  .creator-mark { min-height: 120px; }
+  .form-grid { grid-template-columns: 1fr; }
+  .field.full { grid-column: auto; }
+  .pending-item { grid-template-columns: 1fr; }
+  .pending-item img { width: 100%; height: 180px; }
+  .intro-title { letter-spacing: -1px; }
+  .intro-line { letter-spacing: 4px; }
+  .intro-tagline { line-height: 2; letter-spacing: 3px; }
+  .intro-button { padding: 14px 23px; font-size: 11px; }
+  .intro-corner { left: 12px; bottom: 12px; font-size: 8px; }
+  .intro-top-right { right: 12px; top: 12px; font-size: 8px; }
+  .intro-bg { background-position: center center; }
+}
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation: none !important;
+    scroll-behavior: auto !important;
+    transition: none !important;
+  }
 }
 </style>
 </head>
@@ -224,23 +580,32 @@ footer strong{color:white}
   <div class="intro-bg"></div>
   <div class="intro-scan"></div>
   <div class="intro-top-right">SL<span> / </span>EST. 2026</div>
+
   <div class="intro-content">
     <div class="intro-line">WELCOME TO</div>
     <h1 class="intro-title">SPEED<span>LEGENDS</span></h1>
     <p class="intro-tagline">CARS&nbsp; • &nbsp;BIKES&nbsp; • &nbsp;SPEED&nbsp; • &nbsp;POWER</p>
-    <button class="intro-button" id="enterGalleryButton">ENTER GALLERY <span>→</span></button>
+    <button class="intro-button" id="enterGalleryButton">
+      ENTER GALLERY <span>→</span>
+    </button>
     <div class="intro-bottom"><i></i>SELECT ENTER TO EXPLORE</div>
   </div>
-  <div class="intro-corner"><b>SPEED</b> LEGENDS<br>BUILT FOR VEHICLE ENTHUSIASTS</div>
+
+  <div class="intro-corner">
+    <b>SPEED</b> LEGENDS<br>
+    BUILT FOR VEHICLE ENTHUSIASTS
+  </div>
 </div>
 
 <header>
   <a class="logo" href="#home">SPEED <span>LEGENDS</span></a>
+
   <nav>
     <a href="#home">Home</a>
     <a href="#collection">Collection</a>
     <a href="#creator">Creator</a>
   </nav>
+
   <div class="menu-wrap">
     <button class="dots" id="menuButton" aria-label="Open menu" aria-expanded="false">⋮</button>
     <div class="dropdown" id="menuDropdown">
@@ -253,65 +618,73 @@ footer strong{color:white}
 </header>
 
 <main>
-<section class="hero" id="home">
-  <div class="hero-content">
-    <div class="eyebrow">CARS • BIKES • PERFORMANCE • ENGINEERING</div>
-    <h1>Driven by <span>Power.</span><br>Built for Legends.</h1>
-    <p>Explore extraordinary supercars, hypercars, superbikes and legendary performance machines, including custom builds submitted by enthusiasts.</p>
-    <a class="primary" href="#collection">Explore Collection</a>
-    <button class="secondary" id="submitHeroButton">Submit a Vehicle</button>
-  </div>
-</section>
-
-<section id="collection">
-  <div class="section-heading">
-    <h2>The Speed <span>Collection</span></h2>
-    <p>Discover cars and bikes. Community submissions appear here only after owner approval.</p>
-  </div>
-  <div class="gallery-tools">
-    <div class="search-box"><input type="search" id="carSearch" placeholder="Search cars, bikes, brands, engines..." aria-label="Search vehicles"></div>
-    <select id="vehicleTypeFilter" aria-label="Filter by vehicle type">
-      <option value="">Cars &amp; bikes</option>
-      <option value="car">Cars</option>
-      <option value="bike">Bikes</option>
-    </select>
-    <select id="brandFilter" aria-label="Filter by brand"><option value="">All brands</option></select>
-  </div>
-  <p class="status" id="galleryStatus" aria-live="polite">Connecting to the collection…</p>
-  <div class="car-grid" id="carGrid"></div>
-  <p class="status" id="emptyState" hidden>No approved vehicles match your search yet.</p>
-</section>
-
-<section id="creator">
-  <div class="section-heading">
-    <h2>Meet the <span>Creator</span></h2>
-    <p>A collection made for people who love extraordinary cars, bikes, design and engineering.</p>
-  </div>
-  <div class="creator-panel">
-    <div class="creator-mark">SL</div>
-    <div>
-      <h2>P.G.O. Jason Rison</h2>
-      <p>A supercar enthusiast passionate about automotive design, performance, engineering and custom builds.</p>
-      <p>Instagram: <a href="https://www.instagram.com/okithajason/" target="_blank" rel="noopener noreferrer">@okithajason</a></p>
+  <section class="hero" id="home">
+    <div class="hero-content">
+      <div class="eyebrow">CARS • BIKES • PERFORMANCE • ENGINEERING</div>
+      <h1>Driven by <span>Power.</span><br>Built for Legends.</h1>
+      <p>Explore extraordinary supercars, hypercars, superbikes and legendary performance machines, including custom builds submitted by enthusiasts.</p>
+      <a class="primary" href="#collection">Explore Collection</a>
+      <button class="secondary" id="submitHeroButton">Submit a Vehicle</button>
     </div>
-  </div>
-</section>
+  </section>
 
-<section id="reviewSection" hidden>
-  <div class="section-heading">
-    <h2>Owner <span>Dashboard</span></h2>
-    <p>Review community submissions before they appear in the public gallery.</p>
-  </div>
-  <div class="panel">
-    <h3>Pending submissions</h3>
-    <p class="status" id="pendingStatus">Loading submissions…</p>
-    <div id="pendingList"></div>
-    <hr style="border-color:#333;margin:25px 0">
-    <h3>Published vehicles</h3>
-    <p class="status">Remove approved vehicles from the public gallery here.</p>
-    <div id="publishedList"></div>
-  </div>
-</section>
+  <section id="collection">
+    <div class="section-heading">
+      <h2>The Speed <span>Collection</span></h2>
+      <p>Discover cars and bikes. Community submissions appear here only after owner approval.</p>
+    </div>
+
+    <div class="gallery-tools">
+      <div class="search-box">
+        <input type="search" id="carSearch" placeholder="Search cars, bikes, brands, engines..." aria-label="Search vehicles">
+      </div>
+      <select id="vehicleTypeFilter" aria-label="Filter by vehicle type">
+        <option value="">Cars &amp; bikes</option>
+        <option value="car">Cars</option>
+        <option value="bike">Bikes</option>
+      </select>
+      <select id="brandFilter" aria-label="Filter by brand">
+        <option value="">All brands</option>
+      </select>
+    </div>
+
+    <p class="status" id="galleryStatus" aria-live="polite">Connecting to the collection…</p>
+    <div class="car-grid" id="carGrid"></div>
+    <p class="status" id="emptyState" hidden>No approved vehicles match your search yet.</p>
+  </section>
+
+  <section id="creator">
+    <div class="section-heading">
+      <h2>Meet the <span>Creator</span></h2>
+      <p>A collection made for people who love extraordinary cars, bikes, design and engineering.</p>
+    </div>
+
+    <div class="creator-panel">
+      <div class="creator-mark">SL</div>
+      <div>
+        <h2>P.G.O. Jason Rison</h2>
+        <p>A supercar enthusiast passionate about automotive design, performance, engineering and custom builds.</p>
+        <p>Instagram: <a href="https://www.instagram.com/okithajason/" target="_blank" rel="noopener noreferrer">@okithajason</a></p>
+      </div>
+    </div>
+  </section>
+
+  <section id="reviewSection" hidden>
+    <div class="section-heading">
+      <h2>Owner <span>Dashboard</span></h2>
+      <p>Review community submissions before they appear in the public gallery.</p>
+    </div>
+
+    <div class="panel">
+      <h3>Pending submissions</h3>
+      <p class="status" id="pendingStatus">Loading submissions…</p>
+      <div id="pendingList"></div>
+      <hr style="border-color:#333;margin:25px 0">
+      <h3>Published vehicles</h3>
+      <p class="status">Remove approved vehicles from the public gallery here.</p>
+      <div id="publishedList"></div>
+    </div>
+  </section>
 </main>
 
 <footer>
@@ -320,46 +693,105 @@ footer strong{color:white}
   © <span id="currentYear"></span> Speed Legends.
 </footer>
 
+<!-- VEHICLE SUBMISSION MODAL -->
 <div class="modal-backdrop" id="submitModal" role="dialog" aria-modal="true" aria-labelledby="submitTitle">
   <div class="modal">
     <div class="modal-header">
       <h2 id="submitTitle">Submit a Vehicle</h2>
       <button class="close-modal" data-close="submitModal" aria-label="Close">×</button>
     </div>
-    <p class="status">Fill in the details and upload a photo of your car or bike. Your submission stays private until approved. Image limit: 5 MB.</p>
+
+    <p class="status">Fill in the details and upload a photo. Your submission stays private until approved. Image limit: 5 MB.</p>
+
     <form id="submitForm">
       <div class="form-grid">
-        <div class="field"><label for="vehicleType">Vehicle type *</label><select id="vehicleType" required><option value="car">Car</option><option value="bike">Bike / Superbike</option></select></div>
-        <div class="field"><label for="sName">Vehicle name *</label><input id="sName" required maxlength="100" placeholder="Ducati Panigale V4"></div>
-        <div class="field"><label for="sBrand">Brand *</label><input id="sBrand" required maxlength="60" placeholder="Ducati"></div>
-        <div class="field"><label for="sYear">Model year</label><input id="sYear" type="number" min="1886" max="2100" placeholder="2024"></div>
-        <div class="field"><label for="sHorsepower">Horsepower (hp)</label><input id="sHorsepower" type="number" min="0" max="10000" placeholder="759"></div>
-        <div class="field"><label for="sEngine">Engine / capacity</label><input id="sEngine" maxlength="100" placeholder="1103 cc V4"></div>
-        <div class="field"><label for="sSpeed">Top speed (km/h)</label><input id="sSpeed" type="number" min="0" max="1000" placeholder="350"></div>
-        <div class="field"><label for="sColor">Exterior colour</label><input id="sColor" maxlength="60" placeholder="Matte black"></div>
-        <div class="field"><label for="sBodyKit">Body kit / modifications</label><input id="sBodyKit" maxlength="150" placeholder="Carbon-fibre aero kit / exhaust"></div>
-        <div class="field full"><label for="sDescription">Description</label><textarea id="sDescription" maxlength="500" placeholder="Tell us about this vehicle…"></textarea></div>
-        <div class="field full"><label for="sPhoto">Upload vehicle photo * (JPG, PNG or WebP; max 5 MB)</label><input id="sPhoto" type="file" accept="image/jpeg,image/png,image/webp" required></div>
+        <div class="field">
+          <label for="vehicleType">Vehicle type *</label>
+          <select id="vehicleType" required>
+            <option value="car">Car</option>
+            <option value="bike">Bike / Superbike</option>
+          </select>
+        </div>
+
+        <div class="field">
+          <label for="sName">Vehicle name *</label>
+          <input id="sName" required maxlength="100" placeholder="Ducati Panigale V4">
+        </div>
+
+        <div class="field">
+          <label for="sBrand">Brand *</label>
+          <input id="sBrand" required maxlength="60" placeholder="Ducati">
+        </div>
+
+        <div class="field">
+          <label for="sYear">Model year</label>
+          <input id="sYear" type="number" min="1886" max="2100" placeholder="2024">
+        </div>
+
+        <div class="field">
+          <label for="sHorsepower">Horsepower (hp)</label>
+          <input id="sHorsepower" type="number" min="0" max="10000" placeholder="759">
+        </div>
+
+        <div class="field">
+          <label for="sEngine">Engine / capacity</label>
+          <input id="sEngine" maxlength="100" placeholder="1103 cc V4">
+        </div>
+
+        <div class="field">
+          <label for="sSpeed">Top speed (km/h)</label>
+          <input id="sSpeed" type="number" min="0" max="1000" placeholder="350">
+        </div>
+
+        <div class="field">
+          <label for="sColor">Exterior colour</label>
+          <input id="sColor" maxlength="60" placeholder="Matte black">
+        </div>
+
+        <div class="field">
+          <label for="sBodyKit">Body kit / modifications</label>
+          <input id="sBodyKit" maxlength="150" placeholder="Carbon-fibre aero kit / exhaust">
+        </div>
+
+        <div class="field full">
+          <label for="sDescription">Description</label>
+          <textarea id="sDescription" maxlength="500" placeholder="Tell us about this vehicle…"></textarea>
+        </div>
+
+        <div class="field full">
+          <label for="sPhoto">Upload vehicle photo * (JPG, PNG or WebP; max 5 MB)</label>
+          <input id="sPhoto" type="file" accept="image/jpeg,image/png,image/webp" required>
+        </div>
       </div>
+
       <div class="form-actions">
         <button class="primary" id="submitCarButton" type="submit">Send for Approval</button>
         <button class="secondary" type="button" data-close="submitModal">Cancel</button>
       </div>
+
       <p class="status" id="submitStatus" aria-live="polite"></p>
     </form>
   </div>
 </div>
 
+<!-- OWNER LOGIN MODAL -->
 <div class="modal-backdrop" id="loginModal" role="dialog" aria-modal="true" aria-labelledby="loginTitle">
   <div class="modal">
     <div class="modal-header">
       <h2 id="loginTitle">Owner Login</h2>
       <button class="close-modal" data-close="loginModal" aria-label="Close">×</button>
     </div>
+
     <p class="status">Sign in with the password for your owner account.</p>
+
     <form id="loginForm">
-      <div class="field"><label for="ownerPassword">Owner password</label><input id="ownerPassword" type="password" autocomplete="current-password" required></div>
-      <div class="form-actions"><button class="primary" type="submit">Sign in</button></div>
+      <div class="field">
+        <label for="ownerPassword">Owner password</label>
+        <input id="ownerPassword" type="password" autocomplete="current-password" required>
+      </div>
+      <div class="form-actions">
+        <button class="primary" type="submit">Sign in</button>
+      </div>
       <p class="status" id="loginStatus" aria-live="polite"></p>
     </form>
   </div>
@@ -367,24 +799,37 @@ footer strong{color:white}
 
 <script type="module">
 import { initializeApp } from "https://www.gstatic.com/firebasejs/11.10.0/firebase-app.js";
+
 import {
-  getAuth, signInWithEmailAndPassword, onAuthStateChanged,
-  signOut, signInAnonymously
+  getAuth,
+  signInWithEmailAndPassword,
+  onAuthStateChanged,
+  signOut,
+  signInAnonymously
 } from "https://www.gstatic.com/firebasejs/11.10.0/firebase-auth.js";
+
 import {
-  getDatabase, ref, onValue, push, set, remove
+  getDatabase,
+  ref,
+  onValue,
+  push,
+  set,
+  remove
 } from "https://www.gstatic.com/firebasejs/11.10.0/firebase-database.js";
 
-/* WELCOME OPENING BUTTON */
+/* OPENING SCREEN */
 const introScreen = document.getElementById("introScreen");
+
 document.getElementById("enterGalleryButton").addEventListener("click", () => {
   introScreen.classList.add("leaving");
   document.body.classList.remove("intro-open");
+
   setTimeout(() => {
     introScreen.style.display = "none";
   }, 950);
 });
 
+/* FIREBASE CONFIGURATION */
 const firebaseConfig = {
   apiKey: "AIzaSyD1mKQA4ZkQ9BoYCUpaEFGGi8rwyU8LOPA",
   authDomain: "super-car-collection.firebaseapp.com",
@@ -401,8 +846,13 @@ const CLOUDINARY_CLOUD_NAME = "zl6ldx0y";
 const CLOUDINARY_UPLOAD_PRESET = "car_gallery_upload";
 
 const $ = id => document.getElementById(id);
+
 const esc = value => String(value ?? "").replace(/[&<>"']/g, c => ({
-  "&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"
+  "&": "&amp;",
+  "<": "&lt;",
+  ">": "&gt;",
+  '"': "&quot;",
+  "'": "&#39;"
 }[c]));
 
 const app = initializeApp(firebaseConfig);
@@ -423,65 +873,81 @@ function message(id, text, type = "") {
   $(id).textContent = text;
   $(id).className = "status " + type;
 }
+
 function owner() {
   return !!currentUser && currentUser.email === OWNER_EMAIL;
 }
+
 function openModal(id) {
   $(id).classList.add("open");
 }
+
 function closeModal(id) {
   $(id).classList.remove("open");
 }
+
 function updateMenu() {
   $("ownerLoginMenuButton").hidden = owner();
   $("reviewMenuButton").hidden = !owner();
   $("signOutMenuButton").hidden = !owner();
 }
 
+/* MENU */
 $("menuButton").addEventListener("click", () => {
   const opened = $("menuDropdown").classList.toggle("open");
   $("menuButton").setAttribute("aria-expanded", String(opened));
 });
-document.addEventListener("click", e => {
-  if (!e.target.closest(".menu-wrap")) {
+
+document.addEventListener("click", event => {
+  if (!event.target.closest(".menu-wrap")) {
     $("menuDropdown").classList.remove("open");
     $("menuButton").setAttribute("aria-expanded", "false");
   }
 });
+
 $("submitMenuButton").addEventListener("click", () => {
   $("menuDropdown").classList.remove("open");
   openModal("submitModal");
 });
-$("submitHeroButton").addEventListener("click", () => openModal("submitModal"));
+
+$("submitHeroButton").addEventListener("click", () => {
+  openModal("submitModal");
+});
+
 $("ownerLoginMenuButton").addEventListener("click", () => {
   $("menuDropdown").classList.remove("open");
   openModal("loginModal");
 });
+
 $("reviewMenuButton").addEventListener("click", () => {
   $("menuDropdown").classList.remove("open");
   $("reviewSection").hidden = false;
-  $("reviewSection").scrollIntoView({behavior:"smooth"});
+  $("reviewSection").scrollIntoView({ behavior: "smooth" });
 });
+
 $("signOutMenuButton").addEventListener("click", async () => {
   try {
     await signOut(auth);
-  } catch (e) {
-    alert("Sign out failed: " + e.message);
+  } catch (error) {
+    alert("Sign out failed: " + error.message);
   }
 });
 
-document.querySelectorAll("[data-close]").forEach(button =>
-  button.addEventListener("click", () => closeModal(button.dataset.close))
-);
-document.querySelectorAll(".modal-backdrop").forEach(modal =>
-  modal.addEventListener("click", e => {
-    if (e.target === modal) closeModal(modal.id);
-  })
-);
+document.querySelectorAll("[data-close]").forEach(button => {
+  button.addEventListener("click", () => closeModal(button.dataset.close));
+});
+
+document.querySelectorAll(".modal-backdrop").forEach(modal => {
+  modal.addEventListener("click", event => {
+    if (event.target === modal) closeModal(modal.id);
+  });
+});
+
 $("carSearch").addEventListener("input", renderGallery);
 $("vehicleTypeFilter").addEventListener("change", renderGallery);
 $("brandFilter").addEventListener("change", renderGallery);
 
+/* AUTHENTICATION */
 onAuthStateChanged(auth, async user => {
   currentUser = user;
   updateMenu();
@@ -489,9 +955,12 @@ onAuthStateChanged(auth, async user => {
   if (!user) {
     try {
       await signInAnonymously(auth);
-    } catch (e) {
-      message("galleryStatus", "Could not connect. Check that Anonymous Authentication is enabled.");
-      console.error(e);
+    } catch (error) {
+      message(
+        "galleryStatus",
+        "Could not connect. Check that Anonymous Authentication is enabled."
+      );
+      console.error(error);
     }
     return;
   }
@@ -512,21 +981,26 @@ onAuthStateChanged(auth, async user => {
   }
 });
 
+/* READ APPROVED VEHICLES */
 function startApprovedListener() {
   if (approvedStarted) return;
   approvedStarted = true;
 
   stopApproved = onValue(ref(db, "approvedCars"), snapshot => {
     const data = snapshot.val() || {};
-    approvedCars = Object.entries(data).map(([id, car]) => ({id, ...car}));
+    approvedCars = Object.entries(data).map(([id, car]) => ({ id, ...car }));
     renderGallery();
     renderPublished();
   }, error => {
-    message("galleryStatus", "Could not load the collection. Check Realtime Database rules.");
+    message(
+      "galleryStatus",
+      "Could not load the collection. Check Realtime Database rules."
+    );
     console.error(error);
   });
 }
 
+/* OWNER-ONLY PENDING SUBMISSIONS */
 function startPendingListener() {
   if (!owner() || pendingStarted) return;
   pendingStarted = true;
@@ -534,7 +1008,7 @@ function startPendingListener() {
   stopPending = onValue(ref(db, "pendingCars"), snapshot => {
     if (!owner()) return;
     const data = snapshot.val() || {};
-    pendingCars = Object.entries(data).map(([id, car]) => ({id, ...car}));
+    pendingCars = Object.entries(data).map(([id, car]) => ({ id, ...car }));
     renderPending();
   }, error => {
     message("pendingStatus", "Could not load submissions. Check owner permissions.");
@@ -542,6 +1016,7 @@ function startPendingListener() {
   });
 }
 
+/* VEHICLE SPECIFICATIONS */
 function specs(car) {
   const items = [
     ["Horsepower", car.horsepower ? car.horsepower + " hp" : "Not provided"],
@@ -551,33 +1026,54 @@ function specs(car) {
     ["Body kit", car.bodyKit || "Not provided"],
     ["Year", car.year || "Not provided"]
   ];
-  return items.map(([key,value]) =>
-    `<div class="spec"><small>${esc(key)}</small><strong>${esc(value)}</strong></div>`
-  ).join("");
+
+  return items.map(([key, value]) => `
+    <div class="spec">
+      <small>${esc(key)}</small>
+      <strong>${esc(value)}</strong>
+    </div>
+  `).join("");
 }
 
+/* PUBLIC GALLERY */
 function renderGallery() {
   const term = $("carSearch").value.trim().toLowerCase();
-  const chosen = $("brandFilter").value;
+  const chosenBrand = $("brandFilter").value;
   const chosenType = $("vehicleTypeFilter").value;
-  const brands = [...new Set(approvedCars.map(car => car.brand).filter(Boolean))].sort();
+
+  const brands = [...new Set(
+    approvedCars.map(car => car.brand).filter(Boolean)
+  )].sort();
 
   $("brandFilter").innerHTML =
     '<option value="">All brands</option>' +
-    brands.map(brand => `<option value="${esc(brand)}">${esc(brand)}</option>`).join("");
-  $("brandFilter").value = brands.includes(chosen) ? chosen : "";
+    brands.map(brand =>
+      `<option value="${esc(brand)}">${esc(brand)}</option>`
+    ).join("");
+
+  $("brandFilter").value = brands.includes(chosenBrand) ? chosenBrand : "";
 
   const filterBrand = $("brandFilter").value;
+
   const list = approvedCars.filter(car => {
     const type = car.vehicleType === "bike" ? "bike" : "car";
+
     return (!chosenType || type === chosenType) &&
       (!filterBrand || car.brand === filterBrand) &&
-      [car.name,car.brand,car.engine,car.description,car.bodyKit,car.color,type]
-        .join(" ").toLowerCase().includes(term);
+      [
+        car.name,
+        car.brand,
+        car.engine,
+        car.description,
+        car.bodyKit,
+        car.color,
+        type
+      ].join(" ").toLowerCase().includes(term);
   });
 
   $("galleryStatus").textContent =
     `${list.length} approved vehicle${list.length === 1 ? "" : "s"} in the collection`;
+
   $("emptyState").hidden = list.length > 0;
 
   $("carGrid").innerHTML = list.map(car => `
@@ -585,7 +1081,11 @@ function renderGallery() {
       <img src="${esc(car.photoURL)}" alt="${esc(car.name)}" loading="lazy">
       <div class="car-content">
         <h3>${esc(car.name)}</h3>
-        <div class="tag">${car.vehicleType === "bike" ? "BIKE" : "CAR"} · ${esc(car.brand || (car.vehicleType === "bike" ? "Bike" : "Car"))} ${car.year ? "· " + esc(car.year) : ""}</div>
+        <div class="tag">
+          ${car.vehicleType === "bike" ? "BIKE" : "CAR"}
+          · ${esc(car.brand || (car.vehicleType === "bike" ? "Bike" : "Car"))}
+          ${car.year ? "· " + esc(car.year) : ""}
+        </div>
         <p class="description">${esc(car.description || "Community-submitted vehicle.")}</p>
         <div class="spec-grid">${specs(car)}</div>
       </div>
@@ -593,8 +1093,10 @@ function renderGallery() {
   `).join("");
 }
 
+/* OWNER REVIEW DASHBOARD */
 function renderPending() {
   if (!owner()) return;
+
   $("pendingStatus").textContent =
     `${pendingCars.length} submission${pendingCars.length === 1 ? "" : "s"} waiting for review.`;
 
@@ -605,7 +1107,10 @@ function renderPending() {
         <h3>${esc(car.name)}</h3>
         <p class="status">${esc(car.brand || "")} ${car.year ? "· " + esc(car.year) : ""}</p>
         <p class="description">${esc(car.description || "No description.")}</p>
-        <p class="status">Engine: ${esc(car.engine || "Not provided")} · HP: ${esc(car.horsepower || "Not provided")}</p>
+        <p class="status">
+          Engine: ${esc(car.engine || "Not provided")}
+          · HP: ${esc(car.horsepower || "Not provided")}
+        </p>
         <div class="pending-actions">
           <button class="small-btn approve-btn" data-approve="${esc(car.id)}">Approve</button>
           <button class="small-btn reject-btn" data-reject="${esc(car.id)}">Reject</button>
@@ -614,41 +1119,49 @@ function renderPending() {
     </div>
   `).join("") : '<p class="status">No pending submissions.</p>';
 
-  $("pendingList").querySelectorAll("[data-approve]").forEach(button =>
-    button.addEventListener("click", () => reviewCar(button.dataset.approve, true))
-  );
-  $("pendingList").querySelectorAll("[data-reject]").forEach(button =>
-    button.addEventListener("click", () => reviewCar(button.dataset.reject, false))
-  );
+  $("pendingList").querySelectorAll("[data-approve]").forEach(button => {
+    button.addEventListener("click", () => reviewCar(button.dataset.approve, true));
+  });
+
+  $("pendingList").querySelectorAll("[data-reject]").forEach(button => {
+    button.addEventListener("click", () => reviewCar(button.dataset.reject, false));
+  });
 }
 
+/* PUBLISHED VEHICLES MANAGEMENT */
 function renderPublished() {
   if (!owner()) return;
+
   $("publishedList").innerHTML = approvedCars.length ? approvedCars.map(car => `
     <div class="pending-item">
       <img src="${esc(car.photoURL)}" alt="${esc(car.name)}">
       <div>
         <h3>${esc(car.name)}</h3>
         <p class="status">${esc(car.brand || "")}</p>
-        <button class="small-btn reject-btn" data-delete="${esc(car.id)}">Remove from gallery</button>
+        <button class="small-btn reject-btn" data-delete="${esc(car.id)}">
+          Remove from gallery
+        </button>
       </div>
     </div>
-  `).join("") : '<p class="status">No published cars yet.</p>';
+  `).join("") : '<p class="status">No published vehicles yet.</p>';
 
-  $("publishedList").querySelectorAll("[data-delete]").forEach(button =>
+  $("publishedList").querySelectorAll("[data-delete]").forEach(button => {
     button.addEventListener("click", async () => {
-      if (!owner() || !confirm("Remove this car from the public gallery?")) return;
+      if (!owner() || !confirm("Remove this vehicle from the public gallery?")) return;
+
       try {
         await remove(ref(db, "approvedCars/" + button.dataset.delete));
-      } catch (e) {
-        alert("Could not remove car: " + e.message);
+      } catch (error) {
+        alert("Could not remove vehicle: " + error.message);
       }
-    })
-  );
+    });
+  });
 }
 
+/* APPROVE OR REJECT */
 async function reviewCar(id, approve) {
   if (!owner()) return;
+
   const car = pendingCars.find(item => item.id === id);
   if (!car) return;
 
@@ -660,47 +1173,64 @@ async function reviewCar(id, approve) {
         reviewedAt: Date.now()
       });
     }
+
     await remove(ref(db, "pendingCars/" + id));
-  } catch (e) {
-    alert("Could not update submission. Check the Realtime Database rules: " + e.message);
+  } catch (error) {
+    alert("Could not update submission. Check your Realtime Database rules: " + error.message);
   }
 }
 
+/* CLOUDINARY PHOTO UPLOAD */
 async function uploadPhoto(file) {
-  const url = `https://api.cloudinary.com/v1_1/${CLOUDINARY_CLOUD_NAME}/image/upload`;
+  const url =
+    `https://api.cloudinary.com/v1_1/${CLOUDINARY_CLOUD_NAME}/image/upload`;
+
   const body = new FormData();
   body.append("file", file);
   body.append("upload_preset", CLOUDINARY_UPLOAD_PRESET);
   body.append("folder", "speed-legends");
 
-  const response = await fetch(url, {method:"POST", body});
+  const response = await fetch(url, {
+    method: "POST",
+    body
+  });
+
   const result = await response.json();
 
   if (!response.ok) {
     throw new Error(result.error?.message || "Cloudinary photo upload failed.");
   }
-  if (!result.secure_url) throw new Error("Cloudinary did not return a photo URL.");
+
+  if (!result.secure_url) {
+    throw new Error("Cloudinary did not return a photo URL.");
+  }
+
   return result.secure_url;
 }
 
-$("submitForm").addEventListener("submit", async e => {
-  e.preventDefault();
+/* SUBMIT A VEHICLE */
+$("submitForm").addEventListener("submit", async event => {
+  event.preventDefault();
 
   const file = $("sPhoto").files[0];
+
   if (!file) {
     message("submitStatus", "Please choose a vehicle photo.", "error");
     return;
   }
-  if (!["image/jpeg","image/png","image/webp"].includes(file.type)) {
+
+  if (!["image/jpeg", "image/png", "image/webp"].includes(file.type)) {
     message("submitStatus", "Upload a JPG, PNG or WebP image.", "error");
     return;
   }
+
   if (file.size > 5 * 1024 * 1024) {
     message("submitStatus", "The photo must be 5 MB or smaller.", "error");
     return;
   }
+
   if (!auth.currentUser) {
-    message("submitStatus", "Connecting to the database. Please try again in a moment.", "error");
+    message("submitStatus", "Connecting to the database. Please try again shortly.", "error");
     return;
   }
 
@@ -730,19 +1260,27 @@ $("submitForm").addEventListener("submit", async e => {
     };
 
     await set(newRef, car);
+
     $("submitForm").reset();
-    message("submitStatus", "Submitted successfully! Your vehicle will appear after the owner approves it.", "success");
-  } catch (err) {
-    console.error(err);
-    message("submitStatus", "Submission failed: " + err.message, "error");
+
+    message(
+      "submitStatus",
+      "Submitted successfully! Your vehicle will appear after the owner approves it.",
+      "success"
+    );
+  } catch (error) {
+    console.error(error);
+    message("submitStatus", "Submission failed: " + error.message, "error");
   } finally {
     button.disabled = false;
     button.textContent = "Send for Approval";
   }
 });
 
-$("loginForm").addEventListener("submit", async e => {
-  e.preventDefault();
+/* OWNER LOGIN */
+$("loginForm").addEventListener("submit", async event => {
+  event.preventDefault();
+
   const password = $("ownerPassword").value;
 
   try {
@@ -750,14 +1288,19 @@ $("loginForm").addEventListener("submit", async e => {
     $("loginForm").reset();
     message("loginStatus", "Signed in successfully.", "success");
     closeModal("loginModal");
-  } catch (err) {
-    console.error(err);
-    message("loginStatus", "Login failed. Check the owner account, password and Email/Password sign-in setting.", "error");
+  } catch (error) {
+    console.error(error);
+    message(
+      "loginStatus",
+      "Login failed. Check the owner account, password and Email/Password sign-in setting.",
+      "error"
+    );
   }
 });
 </script>
 </body>
 </html>
+
 
 
 
