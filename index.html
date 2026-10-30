@@ -418,7 +418,8 @@ footer strong{color:white}
   </div>
   <p class="status">Sign in with the password for your owner account.</p>
   <form id="loginForm">
-   <div class="field"><label for="ownerPassword">Owner password</label><input id="ownerPassword" type="password" autocomplete="current-password" required></div>
+   <div class="field"><label for="ownerPassword">Owner password</label><input id="ownerEmail" type="email" autocomplete="username" placeholder="Enter owner email" required>
+<input id="ownerPassword" type="password" autocomplete="current-password" placeholder="Enter owner password" required>
    <div class="form-actions"><button class="primary" type="submit">Sign in</button></div>
    <p class="status" id="loginStatus" aria-live="polite"></p>
   </form>
@@ -801,18 +802,32 @@ $("submitForm").addEventListener("submit", async e => {
 });
 
 $("loginForm").addEventListener("submit", async e => {
- e.preventDefault();
- const password = $("ownerPassword").value;
+  e.preventDefault();
 
- try {
-  await signInWithEmailAndPassword(auth, OWNER_EMAIL, password);
-  $("loginForm").reset();
-  message("loginStatus", "Signed in successfully.", "success");
-  closeModal("loginModal");
- } catch (err) {
-  console.error(err);
-  message("loginStatus", "Login failed. Check the owner account, password and Email/Password sign-in setting.", "error");
- }
+  const email = $("ownerEmail").value.trim().toLowerCase();
+  const password = $("ownerPassword").value;
+
+  if (email !== OWNER_EMAIL.toLowerCase()) {
+    message("loginStatus", "This email is not authorised for owner access.", "error");
+    return;
+  }
+
+  try {
+    await signInWithEmailAndPassword(auth, email, password);
+
+    if (auth.currentUser?.email?.toLowerCase() !== OWNER_EMAIL.toLowerCase()) {
+      await signOut(auth);
+      message("loginStatus", "This account is not authorised for owner access.", "error");
+      return;
+    }
+
+    $("loginForm").reset();
+    message("loginStatus", "Signed in successfully.", "success");
+    closeModal("loginModal");
+  } catch (err) {
+    console.error(err);
+    message("loginStatus", "Login failed. Check your email and password.", "error");
+  }
 });
 </script>
 </body>
